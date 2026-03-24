@@ -1,0 +1,186 @@
+// commands/plugins/menu.js
+import fetch from 'node-fetch';
+
+const run = async (client, m, args, usedPrefix = '#') => {
+try {
+const botname = global.botname || 'DemitraBot';
+const senderName = m.pushName || 'amig@';
+
+const zonaHoraria = 'America/Bogota';    
+const ahora = new Date();    
+const hora = parseInt(    
+  ahora.toLocaleTimeString('es-CO', { timeZone: zonaHoraria, hour: '2-digit', hour12: false })    
+);    
+
+let saludo;    
+if (hora >= 5 && hora < 12) saludo = 'buenos días ☀️';    
+else if (hora >= 12 && hora < 18) saludo = 'buenas tardes 🌸';    
+else saludo = 'buenas noches 🌙';    
+
+const menuTexto = `
+
+ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
+橫㈵𓂂ㅤㅤ𓐮𝖣ۣؗ𝖤ۣؗ𝖬ۣؗ𝖨ۣؗ𝖳ۣؗ𝖱ۣؗ𝖠ㅤㅤ▞ㅤㅤ𓆭𓆭₂₈₎
+◯◯▸ㅤㅤ⎯⎯▬𝖫ؗOVEㅤㅤ🔘ㅤㅤ ▓█
+
+⟍𝄄𝄄𝄄𝄄𝄄₂₈₎ㅤㅤ 🔲ㅤㅤ#𝖼𝗋𝖾𝖺𝗍𝗈𝗋ㅤㅤ⬤⬤⏋
+
+> ㅤㅤㅤㅤ﹫Demitra(Adara) ㅤㅤ𔘓
+
+
+
+ㅤ  𝗐𝖾𝗅𝖼𝗈𝗆𝖾ㅤ𝗌𝗈𝗒ㅤ𝗗᤻͟𝗲᤻͟𝗺᤻͟𝗶᤻͟𝗍᤻͟𝗋᤻͟𝗮᤻͟ㅤ𝗅𝖺ㅤ
+ㅤ     𝗌𝗈𝗇𝗋𝗂𝗌𝖺ㅤ𝗁𝖾𝖼𝗁𝖺ㅤ𝖼͟𝗈᤻͟𝖽⵿𝗂𝗀᤻͟𝗈
+
+ㅤ   𝖺ㅤ𝖼𝗈𝗇𝗍𝗂𝗇𝗎𝖺𝖼𝗂𝗈𝗇ㅤ𝗅𝖾ㅤ𝗆𝗎𝖾𝗌
+ㅤㅤ   -𝗍𝗋𝗈ㅤ𝗆𝗂𝗌ㅤ𝖼⵿𝗈͟𝗆᤻͟𝖺᤻͟𝗇᤻͟𝖽᤻͟𝗈⵿𝗌
+
+＿＿／ ㅤㅤ ◢Principal + Main. ㅤㅤ  攤䥵𓌙
+
+.report / .reporte / .sug / .suggest
+.status / .estado
+.ping / .p
+.invite / .invitar
+.menu / .help / .allmenu
+
+＿＿／ ㅤ ㅤ     Perfil   ㅤ  攤䥵𓌙
+
+.profile / .perfil
+.setpasatiempo / .sethobby
+.setgenre
+.setdescription / .setdesc
+.marry / .casarse
+.divorce
+.delpasatiempo / .removehobby
+.delgenre
+.deldescription / .deldesc
+.afk
+
+＿＿／ ㅤ ㅤ ◢Groupㅤ ㅤ  攤䥵𓌙
+
+.todos / .invocar / .tagall
+.setwarnlimit
+.warn
+.delwarn
+.setgpdesc
+.setgpbanner
+.setgpname
+.revoke / .restablecer
+.welcome / .bienvenida
+.goodbye / .despedida
+.alerts / .alertas
+.antilink / .antienlaces / .antilinks
+.adminonly / .onlyadmin (on, off)
+.link
+.kick
+.hidetag / .tag
+.gp / .groupinfo
+.promote
+.demote
+.count / .mensajes / .messages / .msgcount
+.open / .abrir
+.close / .closet / .cerrar
+.bot
+
+＿＿／ ㅤ ㅤ ◢Stickers ㅤ ㅤ  攤䥵𓌙
+
+.sticker / .s
+.toimg / .toimage
+.brat
+.bratv
+.emojimix
+.qc
+
+＿＿／ ㅤ ㅤ ⊿ Utils ㅤ ㅤ  攤䥵𓌙
+.get / .fetch
+.pfp / .getpic
+.tourl
+.hd / .enhance / .remini
+.inspect / .inspeccionar
+.ver / .read / .readvo
+.say / .decir
+.translate / .trad / .traducir
+
+＿＿／ ㅤ ㅤ ◢Socket+ㅤ ㅤ  攤䥵𓌙
+
+.join / .unir
+.leave
+.logout
+.reload
+.self
+.codes / .qrs
+
+／ ㅤ ㅤ ◢ Descargas ㅤ ㅤ  攤䥵𓌙
+
+.ytsearch/search
+.tiktok/tt/tiktoksearch/ttsearch/tts
+.play2/mp4/ytmp4/ytvideo/playvideo
+.playmp3ytmp3ytaudio/playaudio
+.pinterest/pin
+.ig/instagram
+.apk/aptoide/apkdl
+
+／ ㅤ ㅤ ◢  Game ㅤ ㅤ  攤䥵𓌙
+
+.top
+.sopa/sopadeletras
+.rastrear
+.ppt
+.pedido
+.orcado/ahorcado
+.meme
+.formarpareja5
+.formarpareja/formarparejas
+.bot/demi
+.confesar/confesiones
+.adivina/adivinaemoji
+.acertijo/riddle
+
+／ ㅤ ㅤ ◢ Expresiones ㅤ ㅤ  攤䥵𓌙
+
+.hug/abrazo
+.happy/feliz
+.angry/enojado
+.airkiss/lanzarbeso/lanzarkiss
+.dance/bailar
+.hi/saludos
+
+> ㅤㅤㅤㅤ@𝗉𝗋𝗈𝗑𝗂𝗆𝗈ㅤㅤ𔘓
+
+
+
+▙▅▚ ㅤ ⇲𝖢ؗ𝖧ۣۤ𝖠ؗ𝖭ۖ𝖭ۤ𝖤ۣ𝖫ㅤ⦙⦙⦙◗ ㅤ 𓂧⁸⁶
+
+> https://whatsapp.com/channel/0029VbBvrmwC1Fu5SYpbBE2A
+
+
+
+ㅤㅤㅤㅤ𝖼𝗋𝖾𝖺𝗍𝗈𝗋ㅤㅤ𔘓ㅤㅤ𝗌𝗁𝖾𝗋𝗒𝗅
+ㅤ
+
+`;
+
+const imageUrl = 'https://files.catbox.moe/q9rv7q.jpeg';    
+
+await client.sendMessage(    
+  m.chat,    
+  {    
+    image: { url: imageUrl },    
+    caption: menuTexto,    
+    mentions: [m.sender],    
+  },    
+  { quoted: m }    
+);
+
+} catch (e) {
+console.error('Error en plugin menu.js:', e);
+await m.reply('Demitra avisa que algo salió mal al generar el menú...');
+}
+};
+
+export default {
+command: ['menu', 'help', 'allmenu'],
+category: 'main',
+description: 'Muestra el menú de comandos del bot',
+run
+};
