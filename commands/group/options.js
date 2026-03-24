@@ -1,0 +1,87 @@
+export default {
+  command: [
+    'welcome', 'bienvenida',
+    'goodbye', 'despedida',
+    'alerts', 'alertas',
+    'antilink', 'antienlaces', 'antilinks',
+    'adminonly', 'onlyadmin'
+  ],
+  category: 'grupo',
+  isAdmin: true,
+
+  run: async (client, m, args, usedPrefix, command) => {
+    const chatData = global.db.data.chats[m.chat]
+    const stateArg = args[0]?.toLowerCase()
+
+    const validStates = ['on', 'off', 'enable', 'disable']
+
+    const mapTerms = {
+      antilinks: 'antilinks',
+      antienlaces: 'antilinks',
+      antilink: 'antilinks',
+      welcome: 'welcome',
+      bienvenida: 'welcome',
+      goodbye: 'goodbye',
+      despedida: 'goodbye',
+      alerts: 'alerts',
+      alertas: 'alerts',
+      adminonly: 'adminonly',
+      onlyadmin: 'adminonly'
+    }
+
+    const featureNames = {
+      antilinks: 'el *AntiEnlace*',
+      welcome: 'el mensaje de *Bienvenida*',
+      goodbye: 'el mensaje de *Despedida*',
+      alerts: 'las *Alertas*',
+      adminonly: 'el modo *Solo Admin*'
+    }
+
+    const featureTitles = {
+      antilinks: 'AntiEnlace',
+      welcome: 'Bienvenida',
+      goodbye: 'Despedida',
+      alerts: 'Alertas',
+      adminonly: 'AdminOnly'
+    }
+
+    const normalizedKey = mapTerms[command.toLowerCase()] || command.toLowerCase()
+
+    if (!(normalizedKey in chatData)) {
+      chatData[normalizedKey] = false
+    }
+
+    const current = chatData[normalizedKey] === true
+    const estado = current ? '✓ Activado' : '✗ Desactivado'
+    const nombreBonito = featureNames[normalizedKey] || `la función *${normalizedKey}*`
+    const titulo = featureTitles[normalizedKey] || normalizedKey
+
+    if (!stateArg) {
+      return client.reply(
+        m.chat,
+        `*𝄄ׄㅤ𝅄🫐⃞፝͜͡⌒𝅄 ${titulo} (✿❛◡❛)*\n\nꕥ Un administrador puede activar o desactivar ${nombreBonito} utilizando:\n\n● _Habilitar ›_ *${usedPrefix + normalizedKey} enable*\n● _Deshabilitar ›_ *${usedPrefix + normalizedKey} disable*\n\nㅤ₊💤᪲ㅤㅤ⵰ *Estado actual ›* ${estado}`,
+        m
+      )
+    }
+
+    if (!validStates.includes(stateArg)) {
+      return m.reply(
+        `𝄄ׄㅤ𝅄🪷⃞፝͜͡⌒𝅄 Estado no válido. Usa *on*, *off*, *enable* o *disable*\n\nEjemplo:\n${usedPrefix}${normalizedKey} enable`
+      )
+    }
+
+    const enabled = ['on', 'enable'].includes(stateArg)
+
+    if (chatData[normalizedKey] === enabled) {
+      return m.reply(
+        `𝄄ׄㅤ𝅄🫐⃞፝͜͡⌒𝅄 *${titulo}* ya estaba *${enabled ? 'activado' : 'desactivado'}*.`
+      )
+    }
+
+    chatData[normalizedKey] = enabled
+
+    return m.reply(
+      `𝄄ׄㅤ𝅄💮⃞፝͜͡⌒𝅄 Has *${enabled ? 'activado' : 'desactivado'}* ${nombreBonito}.`
+    )
+  }
+}
