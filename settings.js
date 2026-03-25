@@ -29,7 +29,7 @@ global.botName = 'Demitra';
 global.wm = 'Demitrabot';
 global.author = '© DemiDevTeam';
 global.dev = '© DemitraTeam';
-global.textbot = '🌸 Zero Two, una guerrera que transforma cada batalla en una danza mortal con su Franxx. 💗⚔️🌸';
+global.textbot = 'ִㅤ୨ 🪼 ୧ㅤ Donde el silencio responde más que mil comandos.  ૮₍´｡･⩊･ ｡₎ა';
 global.etiqueta = 'Demitra';
 
 global.moneda = 'Stamps';
