@@ -46,10 +46,10 @@ global.catalogo = null;
 global.catalogImage = null;
 
 global.botVersion = '1.0.0';
-global.botEmoji = '💗';
-global.emoji = '💗';
-global.emoji2 = '🌸';
-global.emoji3 = '💕';
+global.botEmoji = '🦭';
+global.emoji = '🐢';
+global.emoji2 = '🪼';
+global.emoji3 = '🐋';
 global.prefix = '.';
 
 global.botText = 'love by Adara';
