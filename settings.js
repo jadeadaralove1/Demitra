@@ -61,8 +61,8 @@ global.groupLink = 'https://chat.whatsapp.com/tu-link-grupo';
 global.communityLink = 'https://whatsapp.com/channel/0029VbBvrmwC1Fu5SYpbBE2A';
 global.channelLink = 'https://whatsapp.com/channel/0029VbBvrmwC1Fu5SYpbBE2A';
 global.gitHubRepo = 'https://github.com/zoredevteam-ctrl/Zore-two.git';
-global.emailContact = 'Zoredevteam@gmail.com';
-global.correo = 'Zoredevteam@gmail.com';
+global.emailContact = 'tvxuperlove@gmail.com';
+global.correo = 'tvxuperlove@gmail.com';
 
 global.gp1 = global.groupLink;
 global.comunidad1 = global.communityLink;
