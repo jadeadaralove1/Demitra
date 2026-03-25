@@ -12,38 +12,38 @@ export default {
         return m.reply(`> 🎄 :: Ejemplo:\n\n${usedPrefix + command} @usuario tu mensaje de confesión\n\n> Uso: ${usedPrefix + command} ${m.sender.split`@`[0]} Te admiro mucho...`);
       }
 
-      // Determinar destinatario
       const mentions = Array.isArray(m.mentionedJid) ? m.mentionedJid : [];
-      if (!mentions.length) return m.reply('⚠️  ̷ᩡ Debes mencionar a alguien para enviar la confesión.');
+      if (!mentions.length) {
+        return m.reply('⚠️ Debes mencionar a alguien.');
+      }
 
-      const targetJid = mentions[0]; // Tomamos solo la primera mención
+      let targetJid = mentions[0];
+      targetJid = client.decodeJid ? client.decodeJid(targetJid) : targetJid;
 
-      if (targetJid === m.sender) return m.reply('🎁 :: No puedes enviarte una confesión a ti mismo.');
+      if (targetJid === m.sender) {
+        return m.reply('🎁 No puedes enviarte una confesión a ti mismo.');
+      }
 
-      // Construir mensaje
       const senderTag = `@${m.sender.split('@')[0]}`;
       const targetTag = `@${targetJid.split('@')[0]}`;
 
-      const teks = `ֹ                   ︠︠︠︡  .    ★   .   ︠︠︠︡ 
+      const teks = `ֹ          
+                    ︠︠︠︡  .    ★   .   ︠︠︠︡ 
 
-          𝗖ᥲ𝗿𝗍𝗮   ─   𝗖᥆ᥒ𝖿і𝗱𝗲ᥒᥴіᥲᥣ‎ ‎ ‎ ‎ ‎ ‎  ‎ ‎ ‎    ‎ ‎ ‎ ‎ 
+                   𝗖ᥲ𝗿𝗍𝗮 ─ 𝗖᥆ᥒ𝖿і𝗱𝗲ᥒᥴіᥲᥣ  
 
-──   ̨̽🪼⃚̶ ִ 𝗛᥆ᥣᥲ!! ${targetTag}, һᥲs rᥱᥴіᑲіძ᥆ ᥙᥒ mᥱᥒsᥲȷᥱ sᥱᥴrᥱ𝗍᥆ ძᥱ  ${senderTag}:
+── 🪼 𝗛᥆ᥣᥲ ${targetTag}, has recibido un mensaje secreto de ${senderTag}:
 
+💭 "${text}"
 
-💭ᩚ̷̰⃜⃟ ̷ᩡ  "${text}"
+> “A veces, el silencio dice más que cualquier palabra.” ✨
+`.trim();
 
-
-                    　۪ 𓂃 ੭୧ 𓂃　۪ ׄ
-
-> “A veces, el silencio dice más que cualquier palabra que puedas escuchar.” ✨🧚🏻‍♀️
-      `.trim();
-
-      // Enviar mensaje
+      // Enviar confesión al privado (CON preview)
       await client.sendMessage(targetJid, {
         text: teks,
         contextInfo: {
-          mentionedJid: [targetJid],
+          mentionedJid: [targetJid, m.sender],
           externalAdReply: {
             title: 'DEMITRA envía confesiones',
             body: 'Envía tu respuesta con .respuesta <mensaje>',
@@ -55,11 +55,21 @@ export default {
         },
       });
 
-      return client.sendMessage(m.chat, { text: `「🗒️」 :: Tu confesión ha sido enviada a ${targetTag}.` }, { quoted: m });
+      // Confirmación en el chat
+      return client.sendMessage(
+        m.chat,
+        {
+          text: `「🗒️」 :: Tu confesión ha sido enviada a ${targetTag}.`,
+          contextInfo: {
+            mentionedJid: [targetJid]
+          }
+        },
+        { quoted: m }
+      );
 
     } catch (e) {
       console.error(e);
-      return m.reply(`👻⚠️  Ocurrió un error al enviar la confesión...`);
+      return m.reply('👻⚠️ Error al enviar la confesión...');
     }
   }
 };
