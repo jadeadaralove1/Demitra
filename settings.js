@@ -36,7 +36,7 @@ global.moneda = 'Stamps';
 global.currencySymbol = 'Stamps';
 
 global.welcom1 = '🎩 Bienvenido al grupo. Demitra observa… pero no pregunta demasiado.\n🖤 Respeta las reglas y todo irá bien.\n💻 Edita este mensaje con setwelcome';
-global.welcom2 = '💔 ¡Hasta la próxima, Darling! Gracias por estar aquí~\n🌸 ¡Espero verte pronto de nuevo! 🌸\n💗 Edita este mensaje con setbye 💗';
+global.welcom2 = '👋 Hasta luego. Tu ausencia no pasará desapercibida.\n🖤 Cuida tu camino antes de volver.\n💻 Edita este mensaje con setbye';
 
 global.banner = 'https://wallpapers.com/images/hd/zero-two-pictures-1j4mw86y6ncyfvj2.jpg';
 global.bannerUrl = 'https://wallpapers.com/images/hd/zero-two-pictures-1j4mw86y6ncyfvj2.jpg';
