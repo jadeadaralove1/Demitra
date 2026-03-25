@@ -39,7 +39,7 @@ global.welcom1 = '🎩 Bienvenido al grupo. Demitra observa… pero no pregunta 
 global.welcom2 = '👋 Hasta luego. Tu ausencia no pasará desapercibida.\n🖤 Cuida tu camino antes de volver.\n💻 Edita este mensaje con setbye';
 
 global.banner = 'https://wallpapers.com/images/hd/zero-two-pictures-1j4mw86y6ncyfvj2.jpg';
-global.bannerUrl = 'https://wallpapers.com/images/hd/zero-two-pictures-1j4mw86y6ncyfvj2.jpg';
+global.bannerUrl = 'https://files.catbox.moe/4jr8f5.jpg';
 global.avatar = 'https://files.catbox.moe/imfx2l.jpg';
 global.iconUrl = 'https://files.catbox.moe/glvart.jpg';
 global.catalogo = null;
