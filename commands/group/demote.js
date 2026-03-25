@@ -14,7 +14,7 @@ export default {
       if (who === groupMetadata.owner) return m.reply('𝄄ׄㅤ𝅄⚠️⃞፝͜͡⌒𝅄  No puedes degradar al creador del grupo de administrador.')
       if (who === client.user.jid) return m.reply('𝄄ׄㅤ𝅄⚠️⃞፝͜͡⌒𝅄  No puedes degradar al bot de administrador.')
       await client.groupParticipantsUpdate(m.chat, [who], 'demote')
-      await client.sendMessage(m.chat, { text: `ׄㅤֶָ֪ㅤಟㅤׄ    𝗦𝖾 𝖺 𝗊𝗎𝗶𝘁𝗮𝗱𝗈 @usuario  𝖽𝖾 𝖺𝗱𝗺𝗂𝗇. ✖️`, mentions: [who] }, { quoted: m })
+      await client.sendMessage(m.chat, { text: `ׄㅤֶָ֪ㅤಟㅤׄ    𝗦𝖾 𝖺 𝗊𝗎𝗶𝘁𝗮𝗱𝗈 @${who.split('@')[0]}  𝖽𝖾 𝖺𝗱𝗺𝗂𝗇. ✖️`, mentions: [who] }, { quoted: m })
     } catch (e) {
       await m.reply(`> An unexpected error occurred while executing command *${usedPrefix + command}*. Please try again or contact support if the issue persists.\n> [Error: *${e.message}*]`)
     }
