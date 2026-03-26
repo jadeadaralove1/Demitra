@@ -6,19 +6,19 @@ const handler = async (m, { conn }) => {
     const entries = Object.entries(warns).filter(([, v]) => v.count > 0)
 
     if (!entries.length) {
-        return m.reply('✨ Nadie tiene advertencias todavía~ ¡Qué grupo más bueno! 💕')
+        return m.reply('Nadie tiene advertencias todavía ¡Qué grupo más bueno! ')
     }
 
     const mentions = entries.map(([uid]) => uid)
-    let text = `𖤐 *Lista de Advertencias* 𖤐\n\n`
+    let text = `*Lista de Advertencias*\n\n`
 
     for (const [uid, data] of entries) {
-        text += `ꕦ @${uid.split('@')[0]} ✦ *${data.count}/3*\n`
-        text += `  ꙮ ${data.reasons[data.reasons.length - 1]}\n\n`
+        text += `@${uid.split('@')[0]}*${data.count}/3*\n`
+        text += `   ${data.reasons[data.reasons.length - 1]}\n\n`
     }
 
     await conn.sendMessage(m.chat, { text, mentions }, { quoted: m })
-    await m.react('💗')
+    await m.react('🐢')
 }
 
 handler.help = ['advertencias']
