@@ -53,7 +53,13 @@ Aquí tu búsqueda
           caption
         }))
 
-        await conn.sendAlbumMessage(m.chat, medias, { quoted: m })
+        // Envío todo junto
+        for (let media of medias) {
+          await conn.sendMessage(m.chat, {
+            image: media.data,
+            caption: media.caption
+          }, { quoted: m })
+        }
 
         if (data.music) {
           await conn.sendMessage(m.chat, {
@@ -144,7 +150,13 @@ Aquí tu búsqueda
       }
     })
 
-    await conn.sendAlbumMessage(m.chat, medias, { quoted: m })
+    // Envío todo junto como “álbum”
+    for (let media of medias) {
+      await conn.sendMessage(m.chat, {
+        video: media.data,
+        caption: media.caption
+      }, { quoted: m })
+    }
 
     if (m.react) await m.react('✔️')
 
