@@ -1,169 +1,87 @@
-import fetch from 'node-fetch'
+import axios from 'axios'
 
+// 🔎 validar link
 function isInstagram(url = '') {
   return /instagram\.com/i.test(url)
 }
 
-function clean(str = '') {
-  return str
-    .replace(/\\u0026/g, '&')
-    .replace(/\\u003d/g, '=')
-    .replace(/\\\//g, '/')
-    .replace(/&amp;/g, '&')
-}
-
-function isValidVideo(url = '') {
-  return url.includes('.mp4')
-}
-
-function getHeaders() {
-  return {
-    "User-Agent": "Mozilla/5.0 (Linux; Android 13; SM-S918B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36",
-    "Accept": "*/*",
-    "Accept-Language": "es-ES,es;q=0.9",
-    "X-IG-App-ID": "936619743392459",
-    "Referer": "https://www.instagram.com/",
-    "Origin": "https://www.instagram.com",
-    "Connection": "keep-alive"
-  }
-}
-
-function getShortcode(url) {
-  let match = url.match(/\/(reel|p)\/([^\/]+)/)
-  return match ? match[2] : null
-}
-
-async function fetchHTML(url) {
-  const res = await fetch(url, { headers: getHeaders() })
-  if (!res.ok) throw new Error(`HTTP ${res.status}`)
-  return await res.text()
-}
-
-function extractFromHTML(html) {
-  let results = []
-
-  let og = html.match(/property="og:video" content="([^"]+)"/)
-  if (og) results.push(clean(og[1]))
-
-  let json = html.match(/"video_url":"([^"]+)"/g)
-  if (json) {
-    json.forEach(x => results.push(clean(x.split('"')[3])))
-  }
-
-  return [...new Set(results)]
-}
-
-async function tryGraphQL(shortcode) {
-  try {
-    const variables = {
-      shortcode,
-      fetch_tagged_user_count: null,
-      hoisted_comment_id: null,
-      hoisted_reply_id: null
-    }
-
-    const url = `https://www.instagram.com/graphql/query/?query_hash=2b0673e0dc4580674a88d426fe00ea90&variables=${encodeURIComponent(JSON.stringify(variables))}`
-
-    const res = await fetch(url, { headers: getHeaders() })
-    if (!res.ok) return null
-
-    const json = await res.json()
-    const media = json?.data?.shortcode_media
-
-    if (media?.video_url) return media.video_url
-
-    if (media?.edge_sidecar_to_children?.edges) {
-      for (let x of media.edge_sidecar_to_children.edges) {
-        if (x.node.video_url) return x.node.video_url
-      }
-    }
-
-    return null
-  } catch {
-    return null
-  }
-}
-
-async function tryExternalAPI(url) {
-  try {
-    const res = await fetch(`http://173.208.200.227:4005/download/instagram?url=${encodeURIComponent(url)}`)
-    const json = await res.json()
-
-    if (json?.status && json?.result?.dl && isValidVideo(json.result.dl)) {
-      return json.result.dl
-    }
-
-    return null
-  } catch {
-    return null
-  }
-}
-
 let handler = async (m, { conn, args }) => {
-  const url = args[0]
 
-  if (!url) return m.reply('⚠️ Ingresa un link de Instagram')
-  if (!isInstagram(url)) return m.reply('❌ Link inválido')
+  const query = args.join(' ').trim()
+
+  if (!query) return m.reply('⚠️ Ingresa un link de Instagram')
+  if (!isInstagram(query)) return m.reply('❌ Link inválido')
 
   try {
+
     await conn.sendMessage(m.chat, {
       react: { text: '🕒', key: m.key }
     })
 
-    let videos = []
-    const shortcode = getShortcode(url)
+    let data = []
 
-    if (shortcode) {
-      let gql = await tryGraphQL(shortcode)
-      if (gql) videos.push(gql)
+    // 🔹 API 1 (vreden)
+    try {
+      const api1 = `${global.APIs.vreden.url}/api/igdownload?url=${encodeURIComponent(query)}`
+      const res1 = await axios.get(api1)
+
+      if (res1.data?.resultado?.respuesta?.datos?.length) {
+        data = res1.data.resultado.respuesta.datos.map(v => v.url)
+      }
+
+    } catch (e) {
+      console.log('API 1 error:', e.message)
     }
 
-    if (videos.length === 0) {
+    // 🔹 API 2 (delirius)
+    if (!data.length) {
       try {
-        let html = await fetchHTML(url)
-        videos.push(...extractFromHTML(html))
-      } catch {}
-    }
+        const api2 = `${global.APIs.delirius.url}/download/instagram?url=${encodeURIComponent(query)}`
+        const res2 = await axios.get(api2)
 
-    videos = videos.filter(v => isValidVideo(v))
-
-    let valid = videos[0] || null
-
-    if (!valid) {
-      let retries = 2
-      while (retries--) {
-        let ext = await tryExternalAPI(url)
-        if (ext) {
-          valid = ext
-          break
+        if (res2.data?.status && res2.data?.data?.length) {
+          data = res2.data.data.map(v => v.url)
         }
+
+      } catch (e) {
+        console.log('API 2 error:', e.message)
       }
     }
 
-    if (!valid) throw new Error('NO_VIDEO')
+    // ❌ nada encontrado
+    if (!data.length) {
+      throw new Error('NO_VIDEO')
+    }
 
-    await conn.sendMessage(m.chat, {
-      video: { url: valid },
-      caption: '✅ Video descargado'
-    }, { quoted: m })
+    // 📤 enviar videos
+    for (let media of data) {
+      await conn.sendMessage(m.chat, {
+        video: { url: media },
+        caption: '✅ Demitra descargó esto para ti.'
+      }, { quoted: m })
+    }
 
     await conn.sendMessage(m.chat, {
       react: { text: '✅', key: m.key }
     })
 
   } catch (e) {
+
     let msg = '❌ Error\n\n'
 
-    if (e.message.includes('HTTP')) {
-      msg += '🌐 Error de conexión\n' + e.message
+    if (e.message === 'NO_VIDEO') {
+      msg += '🚫 No se pudo obtener el contenido\n'
+      msg += '💡 Las APIs no respondieron o el link no es válido'
     } else {
-      msg += '🚫 Instagram bloqueó el acceso\n'
-      msg += '💡 Intenté múltiples métodos sin éxito'
+      msg += '🌐 Error de conexión\n' + e.message
     }
 
     await m.reply(msg)
   }
 }
 
-handler.command = ['ig']
+handler.command = ['ig', 'instagram']
+handler.category = 'downloader'
+handler.description = 'Descarga videos de Instagram'
+
 export default handler
