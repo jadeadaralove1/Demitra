@@ -4,23 +4,23 @@ import { database } from '../lib/database.js'
 let handler = async (m, { conn, args, isAdmin }) => {
     if (!m.isGroup) return m.reply('Demi avisa que este comando solo es para grupos!*')
 
-    if (!isAdmin) return m.reply(`Solo los administradores pueden controlar mi AntiBot, darling~ 💗`)
+    if (!isAdmin) return m.reply(`Solo los administradores pueden controlar mi AntiBot`)
 
     let chat = database.data.groups[m.chat]
     if (!chat) chat = database.data.groups[m.chat] = { antibot: false }
 
     if (args[0] === 'on') {
-        if (chat.antibot) return m.reply('🌸💗 *¡El AntiBot ya estaba activado, mi darling!*')
+        if (chat.antibot) return m.reply('*¡El AntiBot ya estaba activado!*')
         chat.antibot = true
         await database.save()
-        m.reply(`🌸💗 *¡ANTIBOT ACTIVADO!* 💗🌸\n\nNingún robot imitador podrá entrar a *mi* paraíso rosado nunca más. ¡Solo quiero darlings humanos que me amen de verdad, kyaaah~! ♡`)
+        m.reply(`*¡ANTIBOT ACTIVADO!*\n\nNingún robot imitador podrá entrar a *mi* paraíso rosado nunca más. ¡Solo quiero darlings humanos que me amen de verdad, kyaaah~! ♡`)
     } else if (args[0] === 'off') {
-        if (!chat.antibot) return m.reply('🌸 *El AntiBot ya estaba desactivado.*')
+        if (!chat.antibot) return m.reply('*El AntiBot ya estaba desactivado.*')
         chat.antibot = false
         await database.save()
-        m.reply('🌸 *AntiBot desactivado...* Espero que no entren robots molestos, darling~ 💔')
+        m.reply('*AntiBot desactivado...* Espero que no entren robots molestos')
     } else {
-        m.reply(`*「 🌸 ZERO TWO ANTIBOT 🌸 」*\n\nUso:\n*#antibot on* → Activar\n*#antibot off* → Desactivar\n\n¡Solo admins del grupo! 💗`)
+        m.reply(`*「 🌸 ZERO TWO ANTIBOT 🌸 」*\n\nUso:\n*#antibot on* → Activar\n*#antibot off* → Desactivar\n\n¡Solo admins del grupo!`)
     }
 }
 
@@ -69,10 +69,10 @@ const registerAntiBotEvent = () => {
                     // Expulsar al bot
                     await global.conn.groupParticipantsUpdate(id, [participant], 'remove')
 
-                    const kickText = `🌸💗 *¡KYAAAAAH! ¡BOT DETECTADO Y EXPULSADO!* 💗🌸\n\n` +
-                        `¡No quiero ningún robot imitador en *mi* paraíso rosado!! 💢😠\n` +
-                        `Solo acepto darlings humanos que me quieran de verdad... ¡tú no eres real!\n\n` +
-                        `¡Fuera de aquí @${number} ! Vuelve cuando seas una persona de carne y hueso, kyaaah~ 🌷💗`
+                    const kickText = `¡BOT DETECTADO Y EXPULSADO!*\n\n` +
+                        `¡No quiero ningún robot imitador!! 💢😠\n` +
+                        `Solo acepto humanos de verdad... ¡tú no eres real!\n\n` +
+                        `¡Fuera de aquí @${number} ! Vuelve cuando seas una persona de carne y hueso`
 
                     await global.conn.sendMessage(id, {
                         text: kickText,
@@ -81,11 +81,11 @@ const registerAntiBotEvent = () => {
                 }
             }
         } catch (e) {
-            console.error('[ZERO TWO ANTIBOT ERROR]', e.message)
+            console.error('[DEMIBOT ANTIBOT ERROR]', e.message)
         }
     })
 
-    console.log('🌸💗 Zero Two AntiBot registrado correctamente')
+    console.log('Demibot AntiBot registrado correctamente')
 }
 
 registerAntiBotEvent()
