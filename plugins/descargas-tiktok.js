@@ -144,8 +144,7 @@ Aquí tu búsqueda
       }
     })
 
-    await conn.sendAlbumMessage(m.chat, medias, { quoted: m })
-
+    await sendAlbum(conn, m.chat, medias, m)
     if (m.react) await m.react('✔️')
 
   } catch (e) {
