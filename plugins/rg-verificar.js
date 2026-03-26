@@ -11,7 +11,7 @@ let handler = async (m, { conn, args, prefix }) => {
     const zeroImg = 'https://causas-files.vercel.app/fl/9vs2.jpg'
 
     if (user.registered) return m.reply(
-        `*¡Ya estás registrado!*\n\n🌸 Si quieres eliminar tu registro usa:\n*${prefix}unreg*`
+        `*¡Ya estás registrado!*\n\nSi quieres eliminar tu registro usa:\n*${prefix}unreg*`
     )
 
     if (!Reg.test(text)) return m.reply(
