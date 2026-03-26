@@ -13,14 +13,14 @@ let handler = async (m, { conn, args, isAdmin }) => {
         if (chat.antibot) return m.reply('*¡El AntiBot ya estaba activado!*')
         chat.antibot = true
         await database.save()
-        m.reply(`*¡ANTIBOT ACTIVADO!*\n\nNingún robot imitador podrá entrar a *mi* paraíso rosado nunca más. ¡Solo quiero darlings humanos que me amen de verdad, kyaaah~! ♡`)
+        m.reply(`*¡ANTIBOT ACTIVADO!*\n\nNingún robot imitador podrá entrar`)
     } else if (args[0] === 'off') {
         if (!chat.antibot) return m.reply('*El AntiBot ya estaba desactivado.*')
         chat.antibot = false
         await database.save()
         m.reply('*AntiBot desactivado...* Espero que no entren robots molestos')
     } else {
-        m.reply(`*「 🌸 ZERO TWO ANTIBOT 🌸 」*\n\nUso:\n*#antibot on* → Activar\n*#antibot off* → Desactivar\n\n¡Solo admins del grupo!`)
+        m.reply(`*「 Demitra bot 」*\n\nUso:\n*#antibot on* → Activar\n*#antibot off* → Desactivar\n\n¡Solo admins del grupo!`)
     }
 }
 
