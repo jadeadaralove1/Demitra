@@ -1,23 +1,18 @@
 import axios from 'axios'
 
 let handler = async (m, { conn, args }) => {
-
-  if (!args.length) {
-    return m.reply('ෆ Por favor, ingresa un término de búsqueda o enlace de TikTok.')
-  }
+  if (!args.length) return m.reply('ෆ Por favor, ingresa un término de búsqueda o enlace de TikTok.')
 
   const text = args.join(" ")
   const isUrl = /(?:https?:\/\/)?(?:www\.|vm\.|vt\.|t\.)?tiktok\.com\/[^\s&]+/i.test(text)
 
   try {
-
     if (m.react) await m.react('🕒')
 
     // ======================
     // 🎥 DESCARGA POR LINK
     // ======================
     if (isUrl) {
-
       const res = await axios.get(`https://www.tikwm.com/api/?url=${encodeURIComponent(text)}&hd=1`)
       const data = res.data?.data
 
@@ -27,10 +22,8 @@ let handler = async (m, { conn, args }) => {
       }
 
       const caption = `▙▅▚  ⇲ DEMITRA
-    
      
-         tu video se
-      está descargando
+tu video se está descargando
 
 TÍTULO
 > ${data.title || 'Sin título'}
@@ -41,54 +34,33 @@ LIKES
 Aquí tu búsqueda
 > HECHO POR DEMITRA
 
+— Powered by Demitra`.trim()
 
-         — Powered by Demitra`.trim()
-
-      // 🖼️ SLIDESHOW
+      // Solo imágenes
       if (Array.isArray(data.images) && data.images.length > 0) {
-
         const medias = data.images.slice(0, 10).map(url => ({
-          type: 'image',
-          data: { url },
+          image: { url },
           caption
         }))
-
-        await conn.sendAlbumMessage(m.chat, medias, { quoted: m })
-
-        if (data.music) {
-          await conn.sendMessage(m.chat, {
-            audio: { url: data.music },
-            mimetype: 'audio/mp4',
-            fileName: 'tiktok_audio.mp4'
-          }, { quoted: m })
-        }
-
-        if (m.react) await m.react('✔️')
-        return
+        for (let msg of medias) await conn.sendMessage(m.chat, msg, { quoted: m })
       }
 
-      // 🎬 VIDEO
+      // Solo video
       if (data.play) {
-
-        await conn.sendMessage(m.chat, {
-          video: { url: data.play },
-          caption
-        }, { quoted: m })
-
-        if (data.music) {
-          await conn.sendMessage(m.chat, {
-            audio: { url: data.music },
-            mimetype: 'audio/mp4',
-            fileName: 'tiktok_audio.mp4'
-          }, { quoted: m })
-        }
-
-        if (m.react) await m.react('✔️')
-        return
+        await conn.sendMessage(m.chat, { video: { url: data.play }, caption }, { quoted: m })
       }
 
-      if (m.react) await m.react('✖️')
-      return m.reply('《✧》 No se pudo procesar el contenido.')
+      // Audio si existe
+      if (data.music) {
+        await conn.sendMessage(m.chat, {
+          audio: { url: data.music },
+          mimetype: 'audio/mp4',
+          fileName: 'tiktok_audio.mp4'
+        }, { quoted: m })
+      }
+
+      if (m.react) await m.react('✔️')
+      return
     }
 
     // ======================
@@ -119,32 +91,27 @@ Aquí tu búsqueda
       return m.reply('《✧》 No se encontraron resultados.')
     }
 
-    const medias = results.slice(0, 10).map(v => {
-      const caption = `ㅤ▙▅▚  ⇲ DEMITRA
-    
-     
-       tu búsqueda se
-      está descargando
+    // Solo videos
+    const medias = results.slice(0, 10).map(v => ({
+      video: { url: v.play },
+      caption: `▙▅▚  ⇲ DEMITRA
+
+tu búsqueda se está descargando
 
 TÍTULO
 > ${v.title || 'Sin título'}
 
 LIKES
 > ${(v.digg_count || v.stats?.likes || 0).toLocaleString()}
+
 Aquí tu búsqueda
 > HECHO POR DEMITRA
 
+— Powered by Demitra`
+    }))
 
-         — Powered by Demitra`
+    for (let msg of medias) await conn.sendMessage(m.chat, msg, { quoted: m })
 
-      return {
-        type: 'video',
-        data: { url: v.play },
-        caption
-      }
-    })
-
-    await sendAlbum(conn, m.chat, medias, m)
     if (m.react) await m.react('✔️')
 
   } catch (e) {
