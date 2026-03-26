@@ -8,6 +8,9 @@ const { writeExif } = exif
 let handler = async (m, { conn, args, prefix, command }) => {
   try {
 
+    // ✅ Crear carpeta tmp si no existe
+    if (!fs.existsSync('./tmp')) fs.mkdirSync('./tmp')
+
     if (args[0] === '-list') {
       let helpText = `ꕥ Lista de Formas y Efectos Disponibles para *imagen*:\n\n✦ *Formas:*\n- -c : Círculo\n- -t : Triángulo\n- -s : Estrella\n- -r : Redondeado\n- -h : Hexágono\n- -d : Diamante\n- -f : Marco\n- -b : Borde\n- -w : Onda\n- -m : Espejo\n- -o : Octágono\n- -y : Pentágono\n- -e : Elipse\n- -z : Cruz\n- -v : Corazón\n- -x : Cover\n- -i : Contain\n\n✧ *Efectos:*\n- -blur -sepia -sharpen -brighten -darken -invert -grayscale -rotate90 -rotate180 -flip -flop -normalice -negate -tint\n\n> Ejemplo: *${prefix + command} -c -blur Pack | Autor*`
       return m.reply(helpText)
@@ -62,7 +65,12 @@ let handler = async (m, { conn, args, prefix, command }) => {
 
       await new Promise((resolve, reject) => {
         const p = spawn('ffmpeg', ['-y','-i',inputPath,'-vf',vf,'-c:v','libwebp','-q:v','70','-loop','0',outputPath])
-        p.on('close', code => code === 0 ? resolve() : reject())
+
+        // ✅ Mejor manejo de error
+        p.on('close', code => {
+          if (code === 0) resolve()
+          else reject(new Error('FFmpeg falló'))
+        })
       })
 
       const buffer = fs.readFileSync(outputPath)
@@ -120,8 +128,6 @@ handler.command = ['sticker', 's']
 handler.category = 'utils'
 
 export default handler
-
-// ======================
 
 const isUrl = (text='') => /https?:\/\//.test(text)
 
