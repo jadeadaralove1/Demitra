@@ -3,7 +3,7 @@ import axios from 'axios'
 let handler = async (m, { conn, args }) => {
 
   if (!args.length) {
-    return m.reply('《✧》 Por favor, ingresa un término de búsqueda o enlace de TikTok.')
+    return m.reply('ෆ Por favor, ingresa un término de búsqueda o enlace de TikTok.')
   }
 
   const text = args.join(" ")
