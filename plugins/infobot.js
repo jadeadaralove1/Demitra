@@ -9,7 +9,7 @@ let handler = async (m, { conn }) => {
     const minutes = Math.floor((runtime % 3600) / 60)
     const seconds = Math.floor(runtime % 60)
 
-    const infoText = `💗 *INFO DEL BOT - ${botname}* 🌸\n\n` +
+    const infoText = `*INFO DEL BOT - ${botname}* 🪼\n\n` +
                      `✨ *Nombre:* ${botname}\n` +
                      `✨ *Prefijo:* ${prefix}\n` +
                      `✨ *Versión:* ${version}\n` +
@@ -17,11 +17,11 @@ let handler = async (m, { conn }) => {
                      `✨ *Creado por:* ZoreDevTeam\n` +
                      `✨ *Repo GitHub:* https://github.com/zoredevteam-ctrl/Zore-two\n` +
                      `✨ *Canal oficial:* https://whatsapp.com/channel/0029Vb6p68rF6smrH4Jeay3Y\n\n` +
-                     `¡Soy tu waifu favorita lista para ayudarte darling\~! 💕\n` +
-                     `¿Qué quieres hacer hoy? 🌸`
+                     `¡Soy tu waifu favorita lista para ayudarte\n` +
+                     `¿Qué quieres hacer hoy?`
 
     await m.reply(infoText)
-    await m.react('💗')
+    await m.react('🪼')
 }
 
 handler.help = ['infobot', 'botinfo']
