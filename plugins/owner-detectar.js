@@ -25,7 +25,7 @@ let handler = async (m, { conn }) => {
                 const errorLineMatch = stackLines[0].match(/:(\d+):\d+/)
                 const errorLine = errorLineMatch ? errorLineMatch[1] : 'Desconocido'
 
-                response += `💔 *Error encontrado*\n\n`
+                response += `*Error encontrado*\n\n`
                 response += `📁 *Archivo:* ${file}\n`
                 response += `📝 *Mensaje:* ${error.message}\n`
                 response += `📍 *Línea:* ${errorLine}\n`
