@@ -4,10 +4,10 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     // 1. Verificar si hay texto o si está respondiendo a un mensaje con texto
     let text = args.length ? args.join(' ') : (m.quoted ? m.quoted.text : null)
 
-    if (!text) throw `🌸 *¡Necesito un texto para traducir, darling!* 🌸\n\nUso: *${usedPrefix + command} [texto]*\nEjemplo: *${usedPrefix + command} hello world*`
+    if (!text) throw `> 𓈒    ׂ   🪼੭       ᮫      :  Ingresa el idioma seguido del texto que quieras traducir.\n\nUso: *${usedPrefix + command} [texto]*\nEjemplo: *${usedPrefix + command} hello world*`
 
     // Reacción de espera
-    await m.react('🌎')
+    await m.react('🫟')
 
     try {
         // 2. Traducir (por defecto al español 'es')
