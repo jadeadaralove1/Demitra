@@ -4,7 +4,7 @@ import { database } from '../lib/database.js'
 let handler = async (m, { conn, args, isAdmin }) => {
     if (!m.isGroup) return m.reply('Demi avisa que este comando solo es para grupos!*')
 
-    if (!isAdmin) return m.reply(`Solo los administradores pueden controlar mi AntiBot, darling~* 💗')
+    if (!isAdmin) return m.reply(`Solo los administradores pueden controlar mi AntiBot, darling~ 💗`)
 
     let chat = database.data.groups[m.chat]
     if (!chat) chat = database.data.groups[m.chat] = { antibot: false }
