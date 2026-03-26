@@ -18,7 +18,7 @@ let handler = async (m, { conn, args }) => {
 
       if (!data || (!data.play && !data.images)) {
         if (m.react) await m.react('✖️')
-        return m.reply('《✧》 No se encontró contenido válido.')
+        return m.reply('⚠️ ⣙ ⣙  No se encontró contenido válido.')
       }
 
       const caption = `▙▅▚  ⇲ DEMITRA
@@ -88,7 +88,7 @@ Aquí tu búsqueda
 
     if (!results.length) {
       if (m.react) await m.react('✖️')
-      return m.reply('《✧》 No se encontraron resultados.')
+      return m.reply('⚠️ ⣙ ⣙  No se encontraron resultados.')
     }
 
     // Solo videos
