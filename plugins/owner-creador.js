@@ -1,13 +1,13 @@
 let handler = async (m, { conn }) => {
   try {
-    // 💗 Reacción estilo Zero Two
+    // 🐞 Reacción estilo Demitrabot
     await conn.sendMessage(m.chat, {
-      react: { text: '💗', key: m.key }
+      react: { text: '🐞', key: m.key }
     });
 
     // 📞 Datos del owner
-    let numberOwner = '573107400303';
-    let nombreOwner = '♡ 𝓐 - 𝑪𝒓𝒆𝒂𝒅𝒐𝒓 ♡';
+    let numberOwner = '5493863447787';
+    let nombreOwner = 'Adara';
 
     // 📇 vCard
     let vcardOwner = `BEGIN:VCARD
@@ -18,7 +18,7 @@ TEL;type=CELL;type=VOICE;waid=${numberOwner}:${numberOwner}
 END:VCARD`;
 
     // 💬 Mensaje estilo anime
-    let texto = `╭━━━〔 ♡ 𝒁𝒆𝒓𝒐 𝑻𝒘𝒐 ♡ 〕━━━⬣
+    let texto = `╭━━━〔 ♡ Demitra ♡ 〕━━━⬣
 ┃ ❥ Aquí está mi creador
 ┃ ❥ Puedes hablar con él si me necesitas
 ┃ ❥ No seas tímido... 💗
@@ -37,7 +37,7 @@ END:VCARD`;
 
   } catch (e) {
     console.error(e);
-    await m.reply('♡ Ocurrió un error... inténtalo otra vez');
+    await m.reply('Ocurrió un error... inténtalo otra vez');
   }
 };
 
