@@ -51,17 +51,16 @@ let handler = async (m, { conn, args, prefix, command }) => {
     }
 
     const sendWebpWithExif = async (buffer) => {
-      const media = { mimetype:'webp', data:buffer }
-      const metadata = { packname:pack, author:author, categories:[''] }
-      const stickerPath = await writeExif(media, metadata)
+  if (!buffer || !Buffer.isBuffer(buffer)) {
+    return m.reply('❌ Error: No se pudo procesar el archivo correctamente')
+  }
+  const media = { mimetype: 'webp', data: buffer }
+  const metadata = { packname: pack, author: author, categories: [''] }
+  const stickerPath = await writeExif(media, metadata)
 
-      await conn.sendMessage(m.chat, { sticker:{ url: stickerPath } }, { quoted: m })
-      fs.unlinkSync(stickerPath)
-    }
-
-    const process = async (inputPath) => {
-      const outputPath = `./tmp/sticker-${Date.now()}.webp`
-      const vf = buildFFmpegFilters(effects)
+  await conn.sendMessage(m.chat, { sticker: { url: stickerPath } }, { quoted: m })
+  fs.unlinkSync(stickerPath)
+}
 
       await new Promise((resolve, reject) => {
         const p = spawn('ffmpeg', ['-y','-i',inputPath,'-vf',vf,'-c:v','libwebp','-q:v','70','-loop','0',outputPath])
