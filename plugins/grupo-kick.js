@@ -11,7 +11,7 @@ function findParticipantByDigits(parts = [], digits = '') {
 let handler = async (m, { conn, who }) => {
 
     if (!who)
-        return m.reply(`𖤐 ~ ᴍɪ ᴅᴀʀʟɪɴɢ~! ᴅᴇʙᴇs ᴍᴇɴᴄɪᴏɴᴀʀ ᴀ  un ᴜsᴜᴀʀɪᴏ o ʀᴇsᴘᴏɴᴅᴇʀ ᴀ ᴜɴ ᴍᴇɴsᴀᴊᴇ ᴘᴀʀᴀ ᴇxᴘᴜʀsᴀʀʟᴏ.`)
+        return m.reply(`Menciona o respondé a un usuario para' expulsarlo`)
 
     const metadata = await conn.groupMetadata(m.chat)
     const participants = Array.isArray(metadata?.participants) ? metadata.participants : []
@@ -21,26 +21,26 @@ let handler = async (m, { conn, who }) => {
     const targetNum = DIGITS(who)
 
     if (!targetNum)
-        return m.reply(`❀ Debes mencionar a un usuario o responder a un mensaje para expulsarlo.`)
+        return m.reply(`Debes mencionar a un usuario o responder a un mensaje para expulsarlo.`)
 
     if (targetNum === botNum)
-        return m.reply(`ꕥ No puedo eliminarme a mí mismo del grupo.`)
+        return m.reply(`No puedo eliminarme a mí mismo del grupo.`)
 
     const ownerGroup = DIGITS(metadata.owner || m.chat.split`-`[0])
     if (targetNum === ownerGroup)
-        return m.reply(`ꕥ No puedo eliminar al creador del grupo (está protegido).`)
+        return m.reply(`No puedo eliminar al creador del grupo (está protegido).`)
 
     const targetP = findParticipantByDigits(participants, targetNum)
 
     if (!targetP)
-        return m.reply(`⚠︎ No pude completar la acción. Asegúrate de que sigo siendo administrador.\n> Usa *.report* si el error persiste.`)
+        return m.reply(`No pude completar la acción. Asegúrate de que sigo siendo administrador.\n> Usa *.report* si el error persiste.`)
 
     const targetGroupId = targetP.id || targetP.jid
 
     try {
         await conn.groupParticipantsUpdate(m.chat, [targetGroupId], 'remove')
     } catch {
-        m.reply(`⚠︎ No pude completar la acción. Asegúrate de que sigo siendo administrador.\n> Usa *.report* si el error persiste.`)
+        m.reply(`No pude completar la acción. Asegúrate de que sigo siendo administrador.\n> Usa *.report* si el error persiste.`)
     }
 }
 
