@@ -58,7 +58,7 @@ const handler = async (m, { conn }) => {
                     body: `${totalCmds} comandos disponibles`,
                     mediaType: 1,
                     renderLargerThumbnail: true,
-                    thumbnailUrl: 'https://files.catbox.moe/q9rv7q.jpeg',
+                    thumbnailUrl: 'https://files.catbox.moe/imfx2l.jpg',
                     sourceUrl: 'https://whatsapp.com/channel/0029VbBvrmwC1Fu5SYpbBE2A'
                 }
             }
