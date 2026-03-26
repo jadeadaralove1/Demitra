@@ -1,20 +1,20 @@
 const handler = async (m, { conn, args }) => {
     const text = args.join(' ')
 
-    if (!m.quoted && !text) return m.reply('💗 Darling, escribe un mensaje para notificar a todos~')
+    if (!m.quoted && !text) return m.reply('Escribe un mensaje para notificar a todos')
 
     try {
         const groupMeta = await conn.groupMetadata(m.chat)
         const users = groupMeta.participants.map(u => u.jid || u.id.split(':')[0] + '@s.whatsapp.net')
 
         await conn.sendMessage(m.chat, {
-            text: text || m.quoted?.text || m.quoted?.caption || '💗',
+            text: text || m.quoted?.text || m.quoted?.caption || '🪼',
             mentions: users
         })
 
     } catch (e) {
         console.error(e)
-        await m.reply('💔 Darling, no pude enviar el anuncio... intenta de nuevo~')
+        await m.reply('No pude enviar el anuncio... intenta de nuevo')
     }
 }
 
