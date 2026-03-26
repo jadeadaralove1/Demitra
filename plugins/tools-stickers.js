@@ -1,7 +1,7 @@
 import fs from 'fs'
 import { spawn } from 'child_process'
 import fetch from 'node-fetch'
-import exif from '../../lib/exif.js'
+import exif from '../lib/exif.js'
 
 const { writeExif } = exif
 
