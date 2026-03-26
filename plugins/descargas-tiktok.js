@@ -1,44 +1,160 @@
-import fetch from 'node-fetch'
-
-const API_KEY  = 'causa-ec43262f206b3305'
-const API_BASE = 'https://rest.apicausas.xyz/api/v1/descargas/tiktok'
+import axios from 'axios'
 
 let handler = async (m, { conn, args }) => {
-    let url = (args[0] || '').trim()
-    if (m.quoted && m.quoted.text) url = m.quoted.text.trim()
 
-    if (!url || !url.includes('tiktok.com')) {
-        await m.react('🌸')
-        return m.reply(`💗 *Pega el link de TikTok darling~* 🌸\n\nEjemplo:\n*#tt https://vm.tiktok.com/xxxxxx/*\n\nO responde a un mensaje con el link`)
+  if (!args.length) {
+    return m.reply('《✧》 Por favor, ingresa un término de búsqueda o enlace de TikTok.')
+  }
+
+  const text = args.join(" ")
+  const isUrl = /(?:https?:\/\/)?(?:www\.|vm\.|vt\.|t\.)?tiktok\.com\/[^\s&]+/i.test(text)
+
+  try {
+
+    if (m.react) await m.react('🕒')
+
+    // ======================
+    // 🎥 DESCARGA POR LINK
+    // ======================
+    if (isUrl) {
+
+      const res = await axios.get(`https://www.tikwm.com/api/?url=${encodeURIComponent(text)}&hd=1`)
+      const data = res.data?.data
+
+      if (!data || (!data.play && !data.images)) {
+        if (m.react) await m.react('✖️')
+        return m.reply('《✧》 No se encontró contenido válido.')
+      }
+
+      const caption = `▙▅▚  ⇲ DEMITRA
+    
+     
+         tu video se
+      está descargando
+
+TÍTULO
+> ${data.title || 'Sin título'}
+
+LIKES
+> ${(data.digg_count || 0).toLocaleString()}
+
+Aquí tu búsqueda
+> HECHO POR DEMITRA
+
+
+         — Powered by Demitra`.trim()
+
+      // 🖼️ SLIDESHOW
+      if (Array.isArray(data.images) && data.images.length > 0) {
+
+        const medias = data.images.slice(0, 10).map(url => ({
+          type: 'image',
+          data: { url },
+          caption
+        }))
+
+        await conn.sendAlbumMessage(m.chat, medias, { quoted: m })
+
+        if (data.music) {
+          await conn.sendMessage(m.chat, {
+            audio: { url: data.music },
+            mimetype: 'audio/mp4',
+            fileName: 'tiktok_audio.mp4'
+          }, { quoted: m })
+        }
+
+        if (m.react) await m.react('✔️')
+        return
+      }
+
+      // 🎬 VIDEO
+      if (data.play) {
+
+        await conn.sendMessage(m.chat, {
+          video: { url: data.play },
+          caption
+        }, { quoted: m })
+
+        if (data.music) {
+          await conn.sendMessage(m.chat, {
+            audio: { url: data.music },
+            mimetype: 'audio/mp4',
+            fileName: 'tiktok_audio.mp4'
+          }, { quoted: m })
+        }
+
+        if (m.react) await m.react('✔️')
+        return
+      }
+
+      if (m.react) await m.react('✖️')
+      return m.reply('《✧》 No se pudo procesar el contenido.')
     }
 
-    await m.react('🍬')
+    // ======================
+    // 🔍 BÚSQUEDA
+    // ======================
+    await m.reply('🔎 Buscando...')
 
-    try {
-        const res  = await fetch(`${API_BASE}?url=${encodeURIComponent(url)}&apikey=${API_KEY}`)
-        const json = await res.json()
+    const form = new URLSearchParams()
+    form.append('keywords', text)
+    form.append('count', '10')
+    form.append('cursor', '0')
+    form.append('HD', '1')
 
+    const res = await axios({
+      method: 'POST',
+      url: 'https://tikwm.com/api/feed/search',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        'Cookie': 'current_language=en'
+      },
+      data: form.toString()
+    })
 
-        if (!json.status || !json.data?.download?.url) throw new Error('No se encontró video')
+    let results = res.data?.data?.videos?.filter(v => v.play) || []
 
-        const videoBuffer = await fetch(json.data.download.url).then(r => r.buffer())
-        const caption = `💞 *¡TikTok descargado con éxito darling!* 🌸\n\n` +
-                        `✨ *Autor:* ${json.data.autor || 'TikTok'}\n` +
-                        `📝 *Título:* ${json.data.titulo || 'Sin descripción'}\n` +
-                        `👁️ *Vistas:* ${json.data.vistas?.toLocaleString() || '?'} | ❤️ ${json.data.likes?.toLocaleString() || '?'}\n\n` +
-                        `¡Disfrútalo mi amor~ 💗 No me dejes sola sin ver el video!`
-
-        await conn.sendMessage(m.chat, { video: videoBuffer, caption }, { quoted: m })
-        await m.react('💗')
-
-    } catch (e) {
-        await m.react('💔')
-        m.reply(`💔 *ERROR:*\n\`\`\`${e.message}\`\`\``)
+    if (!results.length) {
+      if (m.react) await m.react('✖️')
+      return m.reply('《✧》 No se encontraron resultados.')
     }
+
+    const medias = results.slice(0, 10).map(v => {
+      const caption = `ㅤ▙▅▚  ⇲ DEMITRA
+    
+     
+       tu búsqueda se
+      está descargando
+
+TÍTULO
+> ${v.title || 'Sin título'}
+
+LIKES
+> ${(v.digg_count || v.stats?.likes || 0).toLocaleString()}
+Aquí tu búsqueda
+> HECHO POR DEMITRA
+
+
+         — Powered by Demitra`
+
+      return {
+        type: 'video',
+        data: { url: v.play },
+        caption
+      }
+    })
+
+    await conn.sendAlbumMessage(m.chat, medias, { quoted: m })
+
+    if (m.react) await m.react('✔️')
+
+  } catch (e) {
+    if (m.react) await m.react('✖️')
+    m.reply(`❌ Error: ${e.message}`)
+  }
 }
 
-handler.help    = ['tt <url>', 'tiktok <url>']
-handler.tags    = ['descargas']
-handler.command = ['tt', 'tiktok', 'tiktokdl']
+handler.command = ['tiktok', 'tt', 'tiktoksearch', 'ttsearch', 'tts']
+handler.category = 'downloader'
 
 export default handler
