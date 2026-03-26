@@ -8,7 +8,7 @@ let handler = async (m, { conn }) => {
             return m.reply('*😔 No pude abrir el grupo.*')
         }
     }
-    m.reply('*❀ Grupo abierto.*\n> Ya pueden volver a escribir sus ocurrencias.')
+    m.reply('*Grupo abierto.*\n> Ya pueden volver a escribir sus ocurrencias.')
 }
 
 handler.help = ['open']
