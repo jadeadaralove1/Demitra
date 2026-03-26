@@ -3,7 +3,7 @@ let handler = async (m, { conn, args }) => {
 
     let icons = 'https://causas-files.vercel.app/fl/9vs2.jpg'
 
-    if (!text) return m.reply('💗 Darling, ingresa un enlace de grupo, comunidad o canal~')
+    if (!text) return m.reply('Ingresa un enlace de grupo, comunidad o canal')
 
     const groupUrl = text.match(/(?:https?:\/\/)?(?:chat\.whatsapp\.com\/)([0-9A-Za-z]{22,24})/i)?.[1]
     const channelUrl = text.match(/(?:https?:\/\/)?(?:whatsapp\.com\/channel\/)([0-9A-Za-z@.]+)/i)?.[1]
@@ -15,7 +15,7 @@ let handler = async (m, { conn, args }) => {
     if (channelUrl) {
         try {
             const info = await conn.newsletterMetadata('invite', channelUrl).catch(() => null)
-            if (!info) return m.reply('💔 No encontré info del canal, darling... verifica el enlace~')
+            if (!info) return m.reply('No encontré info del canal, darling... verifica el enlace')
 
             const id = info.id || 'No encontrado'
             const nombre = info.name || 'Sin nombre'
