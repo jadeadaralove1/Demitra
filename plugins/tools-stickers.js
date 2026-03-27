@@ -76,7 +76,7 @@ ${prefix + command} -c -blur Pack | Autor`)
     }
 
     if (!mime && !args.find(isUrl)) {
-        return m.reply(`Responde una imagen/video o manda URL`)
+        return m.reply(`Responde una imagen/video o manda URL o pon "-list" para más ideas`)
     }
 
     await m.react('🪻')
