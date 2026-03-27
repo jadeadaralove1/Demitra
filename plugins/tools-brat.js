@@ -57,8 +57,8 @@ let handler = async (m, { conn, args, command }) => {
         data: fs.readFileSync(tmpFile)
       },
       {
-        packname: texto1,
-        author: texto2
+        packname: 'Demitra BOT',
+        author: 'Adara'
       }
     )
 
