@@ -12,7 +12,7 @@ const format = sizeFormatter({
 let handler = async (m, { conn }) => {
   const start = performance.now()
 
-  const botId = conn.user.jid || conn.user.id.split(':')[0] + "@s.whatsapp.net"
+  const botId = conn.user.id.split(':')[0] + "@s.whatsapp.net"
   const botname = global.db.data.settings?.[botId]?.botname || 'Bot'
 
   const users = Object.keys(global.db.data.users || {}).length
@@ -23,13 +23,10 @@ let handler = async (m, { conn }) => {
 
   const totalCommands = Object.values(global.plugins || {}).reduce((acc, plugin) => {
     if (!plugin) return acc
-
     let cmds = []
-
     if (Array.isArray(plugin.command)) cmds = plugin.command
     else if (typeof plugin.command === 'string') cmds = [plugin.command]
     else if (Array.isArray(plugin.help)) cmds = plugin.help
-
     return acc + cmds.length
   }, 0)
 
@@ -43,7 +40,7 @@ let handler = async (m, { conn }) => {
   const ping = (performance.now() - start).toFixed(2)
 
   const mensaje =
-`🧚‍♀️  ㅤ＇   ❚ ❘ *${botname}*
+`🧚‍♀️  ❚ ❘ *${botname}*
 ╭━━━〔 ✦ ESTADO ✦ 〕━━━⬣
 ┃ 👥 Usuarios » *${users}*
 ┃ 💬 Grupos » *${groups}*
@@ -56,13 +53,15 @@ let handler = async (m, { conn }) => {
 ╰━━━━━━━━━━━━━━━━⬣`
 
   await conn.sendMessage(m.chat, {
-    image: { url: 'https://files.catbox.moe/ct9p00.jpeg' }, // 🔥 Cambia el link si quieres
+    image: { url: 'https://files.catbox.moe/ct9p00.jpeg' },
     caption: mensaje
   }, { quoted: m })
 }
 
-handler.help = ['status', 'estado']
+// ✅ Reconoce tanto con prefijo como directamente #status
+handler.command = /^(#?status|#?estado)$/i
+
 handler.tags = ['info']
-handler.command = ['status', 'estado']
+handler.help = ['status', 'estado']
 
 export default handler
