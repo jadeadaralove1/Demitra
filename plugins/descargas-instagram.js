@@ -73,7 +73,7 @@ let handler = async (m, { conn, args }) => {
       msg += '🚫 No se pudo obtener el contenido\n'
       msg += '◜࣭࣭࣭࣭࣭᷼💡̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ Las APIs no respondieron o el link no es válido'
     } else {
-      msg += '🌐 Error de conexión\n' + e.message
+      msg += '◜࣭࣭࣭࣭࣭᷼🌐̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ Error de conexión\n' + e.message
     }
 
     await m.reply(msg)
