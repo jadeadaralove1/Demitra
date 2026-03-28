@@ -30,7 +30,7 @@ let handler = async (m, { conn, args, prefix, command, isOwner }) => {
             return
         }
 
-        await m.reply('Demitra\n\n✅ *Bot activado*\nAhora responderé a todos en este grupo.')
+        await m.reply('Demitra\n\n* 𐄹 ۪ ׁ ✅ᩚ̼ 𖹭̫ ▎ *Bot activado*\nAhora responderé a todos en este grupo.')
         await m.react('✅')
     }
 }
