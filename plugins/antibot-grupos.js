@@ -31,7 +31,7 @@ handler.group = true
 
 export default handler
 
-// ==================== EVENTO ANTIBOT (Zero Two Style) ====================
+//  Demitra ANTIBOT. 
 const registerAntiBotEvent = () => {
     if (global.zeroAntiBotRegistered || !global.conn) {
         setTimeout(registerAntiBotEvent, 2000)
@@ -69,10 +69,10 @@ const registerAntiBotEvent = () => {
                     // Expulsar al bot
                     await global.conn.groupParticipantsUpdate(id, [participant], 'remove')
 
-                    const kickText = `¡BOT DETECTADO Y EXPULSADO!*\n\n` +
+                    const kickText = `◜࣭࣭࣭࣭࣭᷼💢̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ ¡BOT DETECTADO Y EXPULSADO!*\n\n` +
                         `◜࣭࣭࣭࣭࣭᷼💢̸̷ׁᮬᰰᩫ࣭࣭࣭࣭  : ¡𝗡O 𝗤UIERO 𝗡INGÚN 𝗕OT 𝗜MITADO. ◜😠!\n` +
-                        `Solo acepto humanos de verdad... ¡tú no eres real!\n\n` +
-                        `¡Fuera de aquí @${number} ! Vuelve cuando seas una persona de carne y hueso`
+                        `◜࣭࣭࣭࣭࣭᷼💢̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ Solo acepto humanos de verdad... ¡tú no eres real!\n\n` +
+                        `◜࣭࣭࣭࣭࣭᷼💢̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ ¡Fuera de aquí @${number} ! Vuelve cuando seas una persona de carne y hueso`
 
                     await global.conn.sendMessage(id, {
                         text: kickText,
