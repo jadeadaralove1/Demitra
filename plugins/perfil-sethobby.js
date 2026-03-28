@@ -1,16 +1,7 @@
+import { database } from '../lib/database.js'
+
 let handler = async (m, { args, usedPrefix }) => {
-
-  // ✅ FIX DB
-  global.db = global.db || {}
-  global.db.data = global.db.data || {}
-  global.db.data.users = global.db.data.users || {}
-
-  // ✅ CREAR USER SI NO EXISTE
-  if (!global.db.data.users[m.sender]) {
-    global.db.data.users[m.sender] = {}
-  }
-
-  const user = global.db.data.users[m.sender]
+  const user = database.data.users[m.sender] || (database.data.users[m.sender] = {})
 
   const input = args.join(' ').trim()
 
@@ -32,54 +23,33 @@ let handler = async (m, { args, usedPrefix }) => {
     'Otro 🌟'
   ]
 
-  // 📌 MOSTRAR LISTA
   if (!input) {
     let lista = '🐢 Elige un pasatiempo:\n\n'
-
-    pasatiemposDisponibles.forEach((p, i) => {
-      lista += `${i + 1}) ${p}\n`
-    })
-
+    pasatiemposDisponibles.forEach((p, i) => lista += `${i + 1}) ${p}\n`)
     lista += `\nEjemplos:\n${usedPrefix}setpasatiempo 1\n${usedPrefix}setpasatiempo Leer`
-
     return m.reply(lista)
   }
 
   let seleccionado = ''
 
-  // 🔢 POR NÚMERO
   if (/^\d+$/.test(input)) {
     const index = parseInt(input) - 1
-
     if (index >= 0 && index < pasatiemposDisponibles.length) {
       seleccionado = pasatiemposDisponibles[index]
     } else {
       return m.reply(`❌ Número inválido (1 - ${pasatiemposDisponibles.length})`)
     }
-  }
-
-  // 🔤 POR TEXTO
-  else {
+  } else {
     const limpio = input.toLowerCase().trim()
-
-    const encontrado = pasatiemposDisponibles.find(p =>
-      p.toLowerCase().includes(limpio)
-    )
-
-    if (!encontrado) {
-      return m.reply('❌ Pasatiempo no encontrado')
-    }
-
+    const encontrado = pasatiemposDisponibles.find(p => p.toLowerCase().includes(limpio))
+    if (!encontrado) return m.reply('❌ Pasatiempo no encontrado')
     seleccionado = encontrado
   }
 
-  // ⚠️ YA TIENE
-  if (user.pasatiempo === seleccionado) {
-    return m.reply(`⚠️ Ya tienes ese pasatiempo:\n> ${user.pasatiempo}`)
-  }
+  if (user.pasatiempo === seleccionado) return m.reply(`⚠️ Ya tienes ese pasatiempo:\n> ${user.pasatiempo}`)
 
-  // ✅ GUARDAR
   user.pasatiempo = seleccionado
+  await database.save()  // ✅ Guardar cambios en la base de datos
 
   return m.reply(`✅ Pasatiempo establecido:\n> ${user.pasatiempo}`)
 }
