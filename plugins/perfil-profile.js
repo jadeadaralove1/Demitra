@@ -10,10 +10,10 @@ let handler = async (m, { conn }) => {
   // Inicializar usuario solo si no existe
   if (!users[userId]) {
     users[userId] = {
-      name: 'Sin nombre',
-      genre: 'Oculto',
+      name: '',
+      genre: '',
       description: '',
-      pasatiempo: 'No definido',
+      pasatiempo: '',
       level: 1,
       exp: 0,
       coins: 0,
