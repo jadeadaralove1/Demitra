@@ -1,11 +1,11 @@
 // handler-meme.js
 let memes = [
   // Aquí ponés tus links de Catbox o cualquier host de imágenes
-  "https://files.catbox.moe/abcd1.jpg",
-  "https://files.catbox.moe/abcd2.jpg",
-  "https://files.catbox.moe/abcd3.jpg",
-  "https://files.catbox.moe/abcd4.jpg",
-  "https://files.catbox.moe/abcd5.jpg"
+  "https://files.catbox.moe/66gvcy.jpg",
+  "https://files.catbox.moe/66gvcy.jpg",
+  "https://files.catbox.moe/66gvcy.jpg",
+  "https://files.catbox.moe/66gvcy.jpg",
+  "https://files.catbox.moe/66gvcy.jpg"
 ];
 
 let handler = async (m, { conn }) => {
