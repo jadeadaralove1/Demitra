@@ -1,72 +1,60 @@
-let handler = async (m, { conn, args, usedPrefix, command }) => {
-  // Inicializar DB
-  global.db = global.db || {}
-  global.db.data = global.db.data || {}
-  global.db.data.users = global.db.data.users || {}
-  global.db.data.chats = global.db.data.chats || {}
-  const chat = global.db.data.chats[m.chat] ||= {}
-  const chatUsers = chat.users ||= {}
-  const userData = chatUsers[m.sender] ||= {}
-  const userGlobal = global.db.data.users[m.sender] ||= {}
+import fetch from 'node-fetch'
 
-  const formatTiempo = ms => {
-    if (!ms) return '0 segundos'
-    const h = Math.floor(ms / 3600000)
-    const m = Math.floor((ms % 3600000) / 60000)
-    const s = Math.floor((ms % 60000) / 1000)
-    const parts = []
-    if (h) parts.push(`${h} ${h===1?'hora':'horas'}`)
-    if (m) parts.push(`${m} ${m===1?'minuto':'minutos'}`)
-    if (s || (!h && !m)) parts.push(`${s} ${s===1?'segundo':'segundos'}`)
-    return parts.join(' ')
+const handler = async (m, { conn, text }) => {
+  const user = global.db.data.users[m.sender]
+
+  user.afk = +new Date()
+  user.afkReason = text || ''
+
+  let thumb = null
+  try {
+    thumb = await (await fetch("https://i.postimg.cc/rFfVL8Ps/image.jpg")).buffer()
+  } catch {
+    thumb = null
   }
 
-  // ------------------ COMANDO AFK ------------------
-  if (command === 'afk') {
-    userData.afk = Date.now()
-    userData.afkReason = args.join(' ') || 'Sin Especificar!'
-    userGlobal.afk = userData.afk
-    userGlobal.afkReason = userData.afkReason
-
-    await conn.sendMessage(m.chat, {
-      text: `🪄  ❚ ❘ El Usuario *${userGlobal.name || m.sender}* estará AFK.\n> ⭐⃞░ Motivo » *${userData.afkReason}*`,
-      mentions: [m.sender]
-    }, { quoted: m })
-    return
+  const shadow_xyz = {
+    key: {
+      remoteJid: "status@broadcast",
+      fromMe: false,
+      id: "ShadowCatalog",
+      participant: "0@s.whatsapp.net"
+    },
+    message: {
+      productMessage: {
+        product: {
+          productImage: thumb
+            ? {
+                mimetype: "image/jpeg",
+                jpegThumbnail: thumb
+              }
+            : undefined,
+          title: "WhatsApp Business • Estado",
+          description: "Shadow team",
+          currencyCode: "USD",
+          priceAmount1000: 0, 
+          retailerId: "ShadowCore",
+          productImageCount: 1
+        },
+        businessOwnerJid: "584242773183@s.whatsapp.net"
+      }
+    }
   }
 
-  // ------------------ SALIR DE AFK ------------------
-  if (userData.afk && userData.afk > -1) {
-    const tiempo = formatTiempo(Date.now() - userData.afk)
-    await conn.sendMessage(m.chat, {
-      text: `ꕥ *${userGlobal.name || m.sender}* Dejaste de estar inactivo.\n> ○ Motivo » *${userData.afkReason || 'sin especificar'}*\n> ○ Tiempo inactivo » *${tiempo}*`,
-      mentions: [m.sender]
-    }, { quoted: m })
-    userData.afk = -1
-    userData.afkReason = ''
-    userGlobal.afk = -1
-    userGlobal.afkReason = ''
-  }
-
-  // ------------------ AVISO DE MENCIONES ------------------
-  const mentioned = m.mentionedJid || []
-  const quoted = m.quoted ? [m.quoted.sender] : []
-  const jids = [...new Set([...mentioned, ...quoted].filter(j => j && j.endsWith('@s.whatsapp.net') && j !== 'status@broadcast'))]
-
-  for (const jid of jids) {
-    const target = chatUsers[jid] || global.db.data.users[jid]
-    if (!target || !target.afk || target.afk < 0) continue
-
-    const tiempo = formatTiempo(Date.now() - target.afk)
-    await conn.sendMessage(m.chat, {
-      text: `ꕥ El usuario *${global.db.data.users[jid]?.name || jid}* está AFK.\n> ○ Motivo » *${target.afkReason || 'sin especificar'}*\n> ○ Tiempo inactivo » *${tiempo}*`,
-      mentions: [jid]
-    }, { quoted: m })
-  }
+  await conn.sendMessage(
+    m.chat,
+    {
+      text:
+        `🌌 *Discípulo de las Sombras*\n` +
+        `Has entrado en estado AFK.\n` +
+        `○ Motivo » *${text || 'sin especificar'}*`
+    },
+    { quoted: shadow_xyz }
+  )
 }
 
-handler.help = ['afk']
-handler.tags = ['fun']
+handler.help = ['afk [razón]']
+handler.tags = ['tools']
 handler.command = ['afk']
-handler.before = true
+
 export default handler
