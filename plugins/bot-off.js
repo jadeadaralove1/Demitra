@@ -25,7 +25,7 @@ let handler = async (m, { conn, args, prefix, command, isOwner }) => {
         await database.save()
 
         if (!estado) {
-            await m.reply('Demitra\n\n❌ *Bot desactivado*\nNo responderé en este grupo.')
+            await m.reply('Demitra\n\n* 𐄹 ۪ ׁ ❌ᩚ̼ 𖹭̫ ▎ *Bot desactivado*\nNo responderé en este grupo.')
             await m.react('❌')
             return
         }
