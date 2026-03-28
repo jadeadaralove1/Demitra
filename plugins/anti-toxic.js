@@ -24,13 +24,13 @@ export default {
             const name = `@${m.sender.split('@')[0]}`
 
             if (user.toxicWarn === 1) {
-                await conn.reply(m.chat, `⚠️ *¡Primera advertencia! \nNo uses palabras tóxicas o te saco del grupo.`, m, { mentions: [m.sender] })
+                await conn.reply(m.chat, `* 𐄹 ۪ ׁ ⚠️ᩚ̼ 𖹭̫ ▎ *¡Primera advertencia! \nNo uses palabras tóxicas o te saco del grupo.`, m, { mentions: [m.sender] })
                 await m.react('⚠️')
             } else if (user.toxicWarn === 2) {
-                await conn.reply(m.chat, `⚠️ *¡Segunda advertencia!* ${name}\nYa van dos... la próxima te echo 😡`, m, { mentions: [m.sender] })
+                await conn.reply(m.chat, `* 𐄹 ۪ ׁ ⚠️ᩚ̼ 𖹭̫ ▎*¡Segunda advertencia!* ${name}\nYa van dos... la próxima te echo 😡.`, m, { mentions: [m.sender] })
                 await m.react('😡')
             } else if (user.toxicWarn >= 3) {
-                await conn.reply(m.chat, `💥 *¡TERCERA Y ÚLTIMA!* ${name}\nLo siento, pero te tengo que sacar...`, m, { mentions: [m.sender] })
+                await conn.reply(m.chat, `* 𐄹 ۪ ׁ 💣ᩚ̼ 𖹭̫ ▎*¡TERCERA Y ÚLTIMA!* ${name}\nLo siento, pero te tengo que sacar...`, m, { mentions: [m.sender] })
                 await m.react('💀')
 
                 await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
