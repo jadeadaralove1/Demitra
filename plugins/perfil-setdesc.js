@@ -1,3 +1,5 @@
+import { database } from '../lib/database.js'
+
 let handler = async (m, { conn, args, usedPrefix, command }) => {
 
   // ✅ FIX DB
