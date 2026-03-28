@@ -1,18 +1,15 @@
-import { database } from '../lib/database.js'
-
 let handler = async (m, { conn }) => {
-  // ✅ FIX DB
   global.db = global.db || {}
   global.db.data = global.db.data || {}
   global.db.data.users = global.db.data.users || {}
-  global.db.data.chats = global.db.data.chats || {}
 
   const mentioned = m.mentionedJid || []
   const userId = mentioned[0] || (m.quoted ? m.quoted.sender : m.sender)
 
-  // Inicializar usuario si no existe
-  if (!global.db.data.users[userId]) {
-    global.db.data.users[userId] = {
+  const globalUsers = global.db.data.users || {}
+
+  if (!globalUsers[userId]) {
+    globalUsers[userId] = {
       name: 'Sin nombre',
       genre: 'Oculto',
       description: '',
@@ -25,62 +22,43 @@ let handler = async (m, { conn }) => {
     }
   }
 
-  const user = global.db.data.users[userId]
+  const user = globalUsers[userId]
 
   const botId = conn.user.jid
   const settings = global.db.data.settings?.[botId] || {}
   const currency = settings.currency || 'Coins'
 
-  const name = user.name
-  const genero = user.genre || 'Oculto'
-  const desc = user.description || 'Sin descripción'
-  const pasatiempo = user.pasatiempo || 'No definido'
+  const pareja = user.marry && globalUsers[user.marry] ? globalUsers[user.marry].name : 'Nadie'
+  const estadoCivil = user.genre === 'Mujer' ? 'Casada con' : user.genre === 'Hombre' ? 'Casado con' : 'Casadx con'
 
-  const pareja = user.marry && global.db.data.users[user.marry]
-    ? global.db.data.users[user.marry].name
-    : 'Nadie'
+  // RANK
+  const users = Object.entries(globalUsers).map(([jid,data]) => ({...data,jid}))
+  const sorted = users.sort((a,b) => (b.level||0) - (a.level||0))
+  const rank = sorted.findIndex(u=>u.jid===userId)+1
 
-  const estadoCivil =
-    genero === 'Mujer' ? 'Casada con'
-    : genero === 'Hombre' ? 'Casado con'
-    : 'Casadx con'
+  // FOTO
+  const perfilImg = await conn.profilePictureUrl(userId, 'image').catch(()=> 'https://cdn.yuki-wabot.my.id/files/2PVh.jpeg')
 
-  const exp = user.exp
-  const nivel = user.level
-
-  const coins = user.coins
-  const bank = user.bank
-  const totalCoins = coins + bank
-
-  // 📈 RANK
-  const users = Object.entries(global.db.data.users).map(([jid, data]) => ({ ...data, jid }))
-  const sorted = users.sort((a, b) => (b.level || 0) - (a.level || 0))
-  const rank = sorted.findIndex(u => u.jid === userId) + 1
-
-  // 🖼️ FOTO
-  const perfil = await conn.profilePictureUrl(userId, 'image').catch(() => 'https://cdn.yuki-wabot.my.id/files/2PVh.jpeg')
-
-  // 🧾 TEXTO
   const txt = `
 ╭───〔 👤 PERFIL 〕───⬣
 │
-│ 🧑 Nombre: ${name}
-│ ⚥ Género: ${genero}
-│ 💬 Desc: ${desc}
-│ 🎯 Pasatiempo: ${pasatiempo}
+│ 🧑 Nombre: ${user.name}
+│ ⚥ Género: ${user.genre||'Oculto'}
+│ 💬 Desc: ${user.description||'Sin descripción'}
+│ 🎯 Pasatiempo: ${user.pasatiempo||'No definido'}
 │ 💞 ${estadoCivil}: ${pareja}
 │
-│ 📊 Nivel: ${nivel}
-│ ✨ XP: ${exp}
+│ 📊 Nivel: ${user.level||0}
+│ ✨ XP: ${user.exp||0}
 │ 🏆 Rank: #${rank}
 │
-│ 💰 ${currency}: ${totalCoins}
+│ 💰 ${currency}: ${(user.coins||0) + (user.bank||0)}
 │
 ╰──────────────⬣
 `.trim()
 
   await conn.sendMessage(m.chat, {
-    image: { url: perfil },
+    image: { url: perfilImg },
     caption: txt,
     mentions: [userId]
   }, { quoted: m })
