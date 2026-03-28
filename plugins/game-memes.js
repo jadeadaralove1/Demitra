@@ -1,6 +1,7 @@
-// handler-meme.js
+// handler-meme-pro.js
+
+// Lista de memes en Catbox (links directos)
 let memes = [
-  // Aquí ponés tus links de Catbox o cualquier host de imágenes
   "https://files.catbox.moe/66gvcy.jpg",
   "https://files.catbox.moe/66gvcy.jpg",
   "https://files.catbox.moe/66gvcy.jpg",
@@ -8,10 +9,17 @@ let memes = [
   "https://files.catbox.moe/66gvcy.jpg"
 ];
 
+// Pool de memes aleatorios para no repetir
+let memePool = [...memes];
+
 let handler = async (m, { conn }) => {
   try {
-    // Elegir meme aleatorio
-    const randomMeme = memes[Math.floor(Math.random() * memes.length)];
+    // Si el pool se vacía, recargarlo
+    if (memePool.length === 0) memePool = [...memes];
+
+    // Elegir un meme aleatorio del pool
+    const index = Math.floor(Math.random() * memePool.length);
+    const randomMeme = memePool.splice(index, 1)[0]; // Lo removemos para no repetir
 
     const wm = (typeof global !== 'undefined' && global.wm) ? global.wm : 'Shadow-BOT-MD ⚔️';
     const bot = 'Shadow-BOT-MD ⚔️';
@@ -36,7 +44,7 @@ let handler = async (m, { conn }) => {
       m.chat,
       caption,
       wm,
-      randomMeme,
+      randomMeme || 'https://files.catbox.moe/default.jpg', // fallback
       [
         ['☽ Siguiente meme ☽', '.meme'],
         ['☽ Volver al Menú ☽', '/menu']
