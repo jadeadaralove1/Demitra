@@ -1,4 +1,5 @@
 let handler = async (m, { conn }) => {
+  // ✅ FIX DB
   global.db = global.db || {}
   global.db.data = global.db.data || {}
   global.db.data.users = global.db.data.users || {}
@@ -6,8 +7,9 @@ let handler = async (m, { conn }) => {
   const mentioned = m.mentionedJid || []
   const userId = mentioned[0] || (m.quoted ? m.quoted.sender : m.sender)
 
-  const globalUsers = global.db.data.users || {}
+  const globalUsers = global.db.data.users
 
+  // Inicializar usuario si no existe
   if (!globalUsers[userId]) {
     globalUsers[userId] = {
       name: 'Sin nombre',
@@ -22,37 +24,46 @@ let handler = async (m, { conn }) => {
     }
   }
 
+  // Esto **toma directamente lo que ya estaba guardado**
   const user = globalUsers[userId]
 
   const botId = conn.user.jid
   const settings = global.db.data.settings?.[botId] || {}
   const currency = settings.currency || 'Coins'
 
-  const nombre = user.name
-  const genero = user.genre || 'Oculto'
-  const desc = user.description || 'Sin descripción'
-  const pasatiempo = user.pasatiempo || 'No definido'
+  const name = user.name
+  const genero = user.genre
+  const desc = user.description
+  const pasatiempo = user.pasatiempo
   const pareja = user.marry && globalUsers[user.marry] ? globalUsers[user.marry].name : 'Nadie'
-  const estadoCivil = genero === 'Mujer' ? 'Casada con' : genero === 'Hombre' ? 'Casado con' : 'Casadx con'
-  const exp = user.exp || 0
-  const nivel = user.level || 0
-  const coins = user.coins || 0
-  const bank = user.bank || 0
+
+  const estadoCivil =
+    genero === 'Mujer' ? 'Casada con'
+    : genero === 'Hombre' ? 'Casado con'
+    : 'Casadx con'
+
+  const exp = user.exp
+  const nivel = user.level
+  const coins = user.coins
+  const bank = user.bank
   const totalCoins = coins + bank
 
+  // 📈 RANK
   const users = Object.entries(globalUsers).map(([jid, data]) => ({ ...data, jid }))
   const sorted = users.sort((a, b) => (b.level || 0) - (a.level || 0))
   const rank = sorted.findIndex(u => u.jid === userId) + 1
 
-  const perfilImg = await conn.profilePictureUrl(userId, 'image').catch(() => 'https://cdn.yuki-wabot.my.id/files/2PVh.jpeg')
+  // 🖼️ FOTO
+  const perfil = await conn.profilePictureUrl(userId, 'image').catch(() => 'https://cdn.yuki-wabot.my.id/files/2PVh.jpeg')
 
-  const txt = `
+  // 🧾 TEXTO
+  let txt = `
 ╭───〔 👤 PERFIL 〕───⬣
 │
-│ 🧑 Nombre: ${nombre}
+│ 🧑 Nombre: ${name}
 │ ⚥ Género: ${genero}
-│ 💬 Desc: ${desc}
-│ 🎯 Pasatiempo: ${pasatiempo}
+│ 💬 Desc: ${desc || 'Sin descripción'}
+│ 🎯 Pasatiempo: ${pasatiempo || 'No definido'}
 │ 💞 ${estadoCivil}: ${pareja}
 │
 │ 📊 Nivel: ${nivel}
@@ -65,7 +76,7 @@ let handler = async (m, { conn }) => {
 `.trim()
 
   await conn.sendMessage(m.chat, {
-    image: { url: perfilImg },
+    image: { url: perfil },
     caption: txt,
     mentions: [userId]
   }, { quoted: m })
