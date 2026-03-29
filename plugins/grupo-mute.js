@@ -9,7 +9,7 @@ let handler = async (m, { conn, prefix, isAdmin, isBotAdmin }) => {
 
     if (!who) return m.reply(`Menciona o responde a un usuario.\nEjemplo: *${prefix}mute @usuario*`)
     if (!isAdmin) return m.reply('👮 Solo administradores pueden usar este comando.')
-    if (!isBotAdmin) return m.reply('🤖 Necesito ser admin para esto.')
+    if (!isBotAdmin) return m.reply('𐄹 ۪ ׁ 🤖ᩚ̼ 𖹭̫ ▎ Necesito ser admin para esto.')
 
     if (who.endsWith('@lid') || isNaN(who.split('@')[0])) {
         try {
