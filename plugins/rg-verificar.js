@@ -18,7 +18,16 @@ Si deseas desaparecer…\n
     )
 
     if (!Reg.test(text)) return m.reply(
-        `𖤐 *Registro - Zero Two* 🌸\n\n*Formato correcto:*\n${prefix}reg nombre.edad\n\n*Ejemplo:*\n${prefix}reg ${name2}.18\n\n💗 ¡Regístrate para usar todas mis funciones, darling~!`
+        `♠ Registro — Demitra ♠\n\n
+
+Formato adecuado:\n
+${prefix}reg nombre.edad\n\n
+
+Ejemplo:\n
+${prefix}reg ${name2}.18\n\n
+
+Qué descuido no estar registrado…
+Adelante, querido~ hazlo correctamente..`
     )
 
     let [_, name, age] = text.match(Reg)
