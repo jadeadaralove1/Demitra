@@ -66,7 +66,6 @@ Next command. ::
 
     await m.react('🪻')
 
-    let thumbBuffer = null
     try {
         const res = await fetch(zeroImg)
         thumbBuffer = Buffer.from(await res.arrayBuffer())
