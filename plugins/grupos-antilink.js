@@ -23,9 +23,9 @@ let handler = async (m, { conn, isAdmin, isBotAdmin, text }) => {
 
     if (isGroupLink && database.data.groups[m.chat].antilink) {
         if (isAdmin) return m.reply('🛡️ *Anti-Link:* Eres admin, no te expulsaré pero evita el spam')
-        if (!isBotAdmin) return m.reply('⚠️ No soy admin, no puedo expulsar al spammer.')
+        if (!isBotAdmin) return m.reply('𐄹 ۪ ׁ ⚠️ᩚ̼ 𖹭̫ ▎ No soy admin, no puedo expulsar al spammer.')
 
-        await m.reply(`Demitra\n\n🚫 *Enlace detectado*\nAdiós. Las reglas son claras.`)
+        await m.reply(`Demitra\n\n◜࣭࣭࣭࣭࣭᷼🚫̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ *Enlace detectado*\nAdiós. Las reglas son claras.`)
 
         // Borrar mensaje
         await conn.sendMessage(m.chat, { delete: m.key })
