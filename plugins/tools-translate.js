@@ -17,7 +17,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
         const response = `᪤  ׅ🍒    ઇ𝗧𝗥𝗔𝗗𝗨𝗖𝗖𝗜𝗢𝗡३ׅ𓋜ֹֹ\n\n` +
                          `📝 *Texto original:* \n${text}\n\n` +
                          `✅ *Traducción:* \n${result.text}\n\n` +
-                         `💕 _Traducido de: [${result.from.language.iso.toUpperCase()}]_`
+                         `Traducido de: [${result.from.language.iso.toUpperCase()}]`
 
         await m.reply(response)
         await m.react('✅')
@@ -25,7 +25,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     } catch (e) {
         console.error(e)
         await m.react('❌')
-        m.reply('💔 *Lo siento darling, hubo un error con el traductor.* Inténtalo de nuevo más tarde.')
+        m.reply('𐄹 ۪ ׁ ⚠️ᩚ̼ 𖹭̫ ▎ *Lo siento, hubo un error con el traductor.* Inténtalo de nuevo más tarde.')
     }
 }
 
