@@ -76,8 +76,6 @@ Next command. ::
    await conn.sendMessage(m.chat, {
     image: { url: 'https://files.catbox.moe/723ln7.jpg' },
     caption: regbot,
-    contextInfo: {
-        externalAdReply: {
             title: '𝗗𝗘𝗠𝗜𝗧𝗥𝗔 - Registro',
             body: 'BOMSHAKALACA',
             thumbnailUrl: 'https://files.catbox.moe/723ln7.jpg',
