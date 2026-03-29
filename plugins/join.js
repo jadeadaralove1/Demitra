@@ -6,7 +6,7 @@ let handler = async (m, { conn, text, isOwner, usedPrefix }) => {
   try {
     if (!text) {
       return m.reply(
-        `♡ Pásame un enlace de grupo\n\nEjemplo:\n${usedPrefix}join https://chat.whatsapp.com/ABCDEFGHIJK123456789 7`
+        `> 𐄹 ۪ ׁ 🤖ᩚ̼ 𖹭̫ ▎Pásame un enlace de grupo\n\nEjemplo:\n${usedPrefix}join https://chat.whatsapp.com/ABCDEFGHIJK123456789 7`
       )
     }
 
@@ -14,7 +14,7 @@ let handler = async (m, { conn, text, isOwner, usedPrefix }) => {
     let match = text.match(linkRegex)
     if (!match) {
       return m.reply(
-        '♡ Mmm... ese enlace no parece válido \nAsegúrate que sea un enlace de WhatsApp'
+        'ᰭ      🪼⃞      ᭡ ♡ Mmm... ese enlace no parece válido \nAsegúrate que sea un enlace de WhatsApp'
       )
     }
 
@@ -40,10 +40,10 @@ let handler = async (m, { conn, text, isOwner, usedPrefix }) => {
       let msg = err?.message || ''
 
       if (msg.includes('already')) {
-        return m.reply('♡ Ya estoy en ese grupo')
+        return m.reply('𐄹 ۪ ׁ 🤖ᩚ̼ 𖹭̫ ▎ Ya estoy en ese grupo')
       }
       if (msg.includes('expired') || msg.includes('invalid')) {
-        return m.reply('♡ El enlace está expirado o inválido')
+        return m.reply('𐄹 ۪ ׁ 🤖ᩚ̼ 𖹭̫ ▎ El enlace está expirado o inválido')
       }
 
       throw err
