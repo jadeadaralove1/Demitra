@@ -12,7 +12,7 @@ const handler = async (msg, { conn, args, usedPrefix, command }) => {
 
     return conn.sendMessage(
       msg.chat,
-      { text: `✳️ Usa:\n.flux <descripción>` },
+      { text: `◜࣭࣭࣭࣭࣭᷼✳️̸̷ׁᮬᰰᩫ࣭࣭࣭࣭  Usa:\n.flux <descripción>` },
       { quoted: msg }
     )
   }
