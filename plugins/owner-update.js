@@ -14,7 +14,7 @@ const handler = async (m, { conn }) => {
                 }
 
                 if (stderr2) console.warn(stderr2);
-                conn.sendMessage(m.chat, { text: `Lo hice a mi manera y funcionó\n\n${stdout2}`, edit: sentMsg.key }, { quoted: m });
+                conn.sendMessage(m.chat, { text: `◜࣭࣭࣭࣭࣭᷼🫐̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ Lo hice a mi manera… Y, por supuesto… funcionó, Nunca falla.\n\n${stdout2}`, edit: sentMsg.key }, { quoted: m });
             });
             return;
         }
