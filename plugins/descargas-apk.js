@@ -19,14 +19,13 @@ let handler = async (m, { conn, args, prefix }) => {
 
     const q = encodeURIComponent(text)
 
-    const texto = `໒꒰ ‌‌ ◌ ´ ꒳ `◌‌ ‌‌ ‌‌꒱ა  𝖡𝗎́𝗌𝗊𝗎𝖾𝖽𝖺 𝖽𝖾 𝖺𝗉𝗄𝗌 𝗅𝗅𝗌𝗍𝖺!ׁ!
-     ` ´∪ ∪` ´\n\n` +
-        `┆ ⋆ Buscando *"${text}"\n\n` +
+    const texto = `໒꒰ ‌‌ ◌ ´ ꒳ `◌‌ ‌‌ ‌‌꒱ა  𝖡𝗎́𝗌𝗊𝗎𝖾𝖽𝖺 𝖽𝖾 𝖺𝗉𝗄𝗌 𝗅𝗅𝗌𝗍𝖺!ׁ!\n\n` +
+        ` Buscando *"${text}"\n\n` +
         `> Elige tu sitio favorito:*\n\n` +
         `> Uptodown* (el más seguro y rápido)\nhttps://uptodown.com/android/search?q=${q}\n\n` +
         `𐄹 ۪ ׁ 📝ᩚ̼ 𖹭̫ ▎ *APKPure* (muchas versiones)\nhttps://apkpure.com/search?q=${q}\n\n` +
-        `*APKCombo* (todas las versiones)\nhttps://apkcombo.com/search?q=${q}\n\n` +
-        `*Aptoide* (fácil de instalar)\nhttps://aptoide.com/search?query=${q}\n\n` +
+        `🪻 *APKCombo* (todas las versiones)\nhttps://apkcombo.com/search?q=${q}\n\n` +
+        `🪻 *Aptoide* (fácil de instalar)\nhttps://aptoide.com/search?query=${q}\n\n` +
         `¡Descarga solo de estos sitios de confianza! Si quieres que te recomiende la mejor versión o te ayude con otra cosa, solo dime ♡\n\n` +
         `0 virus.`
 
