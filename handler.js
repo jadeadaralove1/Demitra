@@ -301,11 +301,11 @@ Te sugiero amablemente usar #menu… a menos que disfrutes equivocarte, claro.
         }
 
         if (cmd.rowner && !isROwner) {
-            return m.reply('𐄹 ۪ ׁ 👑ᩚ̼ 𖹭̫ ▎ *DEMITRA*\n\n> *ACCESO DENEGADO*\n\n“Oh, qué ambición tan… encantadora.”\n\n“Lamentablemente, este privilegio está reservado únicamente para el *creador principal*.”\n\n“Y tú… bueno, no eres él~”');
+            return m.reply('𐄹 ۪ ׁ 👑ᩚ̼ 𖹭̫ ▎ *DEMITRA*\n\n> *ACCESO DENEGADO*\n\n“Oh, qué ambición tan… encantadora.”\n\n“Lamentablemente, este privilegio está reservado únicamente para la *creadora principal*.”\n\n“Y tú… bueno, no eres élla”');
         }
 
         if (cmd.owner && !isOwner) {
-            return m.reply('👑 *ACCESO RESTRINGIDO*\nEste comando solo puede ser ejecutado por mi creador.');
+             return m.reply('𐄹 ۪ ׁ 👑ᩚ̼ 𖹭̫ ▎*DEMITRA*\n\n> *ACCESO RESTRINGIDO*\n\n“Ah… un intento interesante.”\n\n“Pero este comando pertenece exclusivamente a *mi creador*.”\n\n“Y tú, querido… no tienes ese privilegio”');
         }
 
         if (cmd.premium && !isPremium) {
