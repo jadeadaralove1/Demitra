@@ -74,22 +74,21 @@ Next command. ::
     }
 
            await conn.sendMessage(m.chat, {
-            text: regbot,
-            mentions: [m.sender],
-            contextInfo: {
-                mentionedJid: [m.sender],
-                isForwarded: true,
-                forwardingScore: 999,
-                externalAdReply: {
-                    title: 'DEMITRA - Registro',
-                    body: `${totalCmds}`,
-                    mediaType: 1,
-                    renderLargerThumbnail: true,
-                    thumbnailUrl: 'https://files.catbox.moe/723ln7.jpg',
-                    sourceUrl: 'https://whatsapp.com/channel/0029VbBvrmwC1Fu5SYpbBE2A'
-                }
-            }
-        }, { quoted: m })
+    image: { url: 'https://files.catbox.moe/723ln7.jpg' },
+    caption: regbot,
+    mentions: [m.sender],
+    contextInfo: {
+        mentionedJid: [m.sender],
+        externalAdReply: {
+            title: '𝗗𝗘𝗠𝗜𝗧𝗥𝗔 - Registro',
+            body: 'BOMSHAKALACA',
+            mediaType: 1,
+            renderLargerThumbnail: true,
+            thumbnailUrl: 'https://files.catbox.moe/723ln7.jpg',
+            sourceUrl: 'https://whatsapp.com/channel/0029VbBvrmwC1Fu5SYpbBE2A'
+        }
+    }
+}, { quoted: m })
 
     await database.save()
 }
