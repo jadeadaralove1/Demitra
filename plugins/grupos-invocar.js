@@ -11,7 +11,7 @@ const handler = async (m, { conn, args, isAdmin, isOwner }) => {
 
         const caption =
             `
-                ︶𖫲͜⏝ְ〬𔓕    🐞્    𔓕ְ〬︶𖫲͜⏝
+               ︶𖫲͜⏝ְ〬𔓕    🐞્    𔓕ְ〬︶𖫲͜⏝
      𞅀፝֟͜͝𞅀    🦭⃞͝ ⚭   ׅ   𝗜𝗡𝗩𝗢𝗖𝗔𝗡𝗗𝗢    ׂ     ׂ  🫐̼̼ᩙ\n\n` +
             `
 
