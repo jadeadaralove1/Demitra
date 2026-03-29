@@ -309,7 +309,7 @@ Te sugiero amablemente usar #menu… a menos que disfrutes equivocarte, claro.
         }
 
         if (cmd.premium && !isPremium) {
-            return m.reply('💎 *USUARIO PREMIUM*\nEste comando es exclusivo para miembros Premium.');
+            return m.reply('𐄹 ۪ ׁ 💎ᩚ̼ 𖹭̫ ▎ *DEMITRA*\n\n>  *ACCESO PREMIUM*\n\n“Ah… lo siento, pero este pequeño lujo no es para cualquiera”\n\n“Este comando está reservado únicamente para miembros *Premium*.”\n\n“Quizás algún día asciendas… quién sabe.”');
         }
 
         if (cmd.register && !isRegistered) {
