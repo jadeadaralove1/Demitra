@@ -8,7 +8,7 @@ const handler = async (m, { args, prefix }) => {
     const action = args[1]?.toLowerCase()
 
     const features = {
-        welcome:  '🌸 *Welcome*',
+        welcome:  '◜࣭࣭࣭࣭࣭᷼🫐̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ *Welcome*',
         goodbye:  '👋 *Goodbye*',
         antilink: '🔗 *Antilink*',
         antispam: '🚫 *Antispam*',
