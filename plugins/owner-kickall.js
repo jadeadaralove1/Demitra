@@ -22,7 +22,7 @@ let handler = async (m, { conn, isOwner, usedPrefix, command }) => {
         }
 
         // Enviar mensaje de inicio
-        await m.reply(`🔄 Iniciando eliminación de ${nonAdminParticipants.length} miembros...`);
+        await m.reply(`◜࣭࣭࣭࣭࣭᷼🔁̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ Iniciando eliminación de ${nonAdminParticipants.length} miembros...`);
 
         // Eliminar a todos los miembros no administradores
         for (const participant of nonAdminParticipants) {
