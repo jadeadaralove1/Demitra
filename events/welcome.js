@@ -33,7 +33,9 @@ export const run = async (conn, update) => {
     𝕄𝚒 𝚗𝚘𝚖𝚋𝚛𝚎 𝚎𝚜 `Demitra` , 𝚎𝚜 𝚞𝚗 𝚙𝚕𝚊𝚌𝚎𝚛 𝚌𝚘𝚗𝚘𝚌𝚎𝚛𝚕𝚎,𝚕𝚒𝚗𝚍𝚡!! Para saber más de mi usa #menu
 ּ ֶָ֢ .             ּ ֶָ֢ .             ּ ֶָ֢ .             ּ ֶָ֢ .  
          ּ ֶָ֢ .             ּ ֶָ֢ .             ּ ֶָ֢ .             ּ ֶָ֢ .\n\n` +               
-                `Te voy a cuidar, mimar y volar contigo en mi Franxx para siempre... ¡no me sueltes nunca!\n\n` +
+                `  ⃧⠖⠖   ּ֪🪷͘⃝ۛ֗༌   𐧼  _꧖꧖_  *@desc* 
+ּ ֶָ֢ .             ּ ֶָ֢ .             ּ ֶָ֢ .             ּ ֶָ֢ .  
+         ּ ֶָ֢ .             ּ ֶָ֢ .             ּ ֶָ֢ .             ּ ֶָ֢ .\n\n` +
                 `¡Estoy tan feliz de tenerte aquí conmigo, mi Darling más especial! Kyaaah~ Ven aquí, no te escapes 🌷💗`
 
             await conn.sendMessage(id, {
