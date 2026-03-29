@@ -12,7 +12,7 @@ let handler = async (m, { conn }) => {
 
         let name = await conn.getName(who) || 'Darling'
 
-        let caption = `🦭 :: *Foto de perfil de ${name}*\n\n` +
+        let caption = `𐄹 ۪ ׁ 🦭ᩚ̼ 𖹭̫ ▎ *Foto de perfil de ${name}*\n\n` +
                       `¡Mira! 🪼`
 
         await conn.sendMessage(m.chat, {
