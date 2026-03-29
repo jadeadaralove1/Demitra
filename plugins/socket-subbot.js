@@ -23,7 +23,7 @@ let handler = async (m, { conn, args, command }) => {
   const remaining = cooldown - (Date.now() - lastSubs)
 
   if (remaining > 0) {
-    return m.reply(`🕐 Debes esperar *${msToTime(remaining)}* para volver a intentar.`)
+    return m.reply(`◜࣭࣭࣭࣭࣭᷼⏰̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ Debes esperar *${msToTime(remaining)}* para volver a intentar.`)
   }
 
   // ✅ RUTA CORRECTA (FIX IMPORTANTE)
