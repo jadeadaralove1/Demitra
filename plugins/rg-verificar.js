@@ -75,17 +75,18 @@ Next command. ::
     }
 
     await conn.sendMessage(m.chat, {
-        text: regbot,
-        contextInfo: {
-            externalAdReply: {
-                title: '𝗗𝗘𝗠𝗜𝗧𝗥𝗔 - Registro',
-                body: 'BOMSHAKALACA',
-                thumbnail: thumbBuffer,
-                mediaType: 1,
-                renderLargerThumbnail: true
-            }
+    image: { url: 'https://files.catbox.moe/tuimagen.jpg' },
+    caption: regbot,
+    contextInfo: {
+        externalAdReply: {
+            title: '𝗗𝗘𝗠𝗜𝗧𝗥𝗔 - Registro',
+            body: 'BOMSHAKALACA',
+            thumbnailUrl: 'https://files.catbox.moe/tuimagen.jpg',
+            mediaType: 1,
+            renderLargerThumbnail: true
         }
-    }, { quoted: m })
+    }
+}, { quoted: m })
 
     await database.save()
 }
