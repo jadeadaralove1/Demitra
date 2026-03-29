@@ -7,7 +7,8 @@ let handler = async (m, { conn }) => {
 
     // 📞 Datos del owner
     let numberOwner = '5493863447787';
-    let nombreOwner = '『 𝗢𝗪𝗡𝗘𝗥 』 𝗔𝖽𝗮𝗋𝖺！🪼';
+    let nombreOwner = '❷運⛁       #Owner﹐     𓈓 (🪼)    ❤︎    ¿ 𝖠𝖣𝖠𝖱𝖠?
+        𝄖 ♡       ❛  ﹫socialmedia   ❜       ⛃';
 
     // 📇 vCard
     let vcardOwner = `BEGIN:VCARD
