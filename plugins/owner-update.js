@@ -5,7 +5,7 @@ const handler = async (m, { conn }) => {
 
     exec('git pull', (err, stdout, stderr) => {
         if (err) {
-            conn.sendMessage(m.chat, { text: 'Mm... algo salió mal. Déjame intentarlo a la fuerza 💢', edit: sentMsg.key }, { quoted: m });
+            conn.sendMessage(m.chat, { text: '◜࣭࣭࣭࣭࣭᷼💢̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ Mm… algo salió terriblemente mal...Qué encantador...Supongo que tendré que forzarlo', edit: sentMsg.key }, { quoted: m });
 
             exec('git reset --hard origin/main && git pull', (err2, stdout2, stderr2) => {
                 if (err2) {
@@ -24,7 +24,7 @@ const handler = async (m, { conn }) => {
         if (stdout.includes('Already up to date.')) {
             conn.sendMessage(m.chat, { text: 'Todo ya estaba en orden, No había nada que actualizar.', edit: sentMsg.key }, { quoted: m });
         } else {
-            conn.sendMessage(m.chat, { text: `Actualización completada con éxito!\n\n${stdout}`, edit: sentMsg.key }, { quoted: m });
+            conn.sendMessage(m.chat, { text: `◜࣭࣭࣭࣭࣭᷼🐞̸̷ׁᮬᰰᩫ࣭࣭࣭࣭Actualización completada con éxito!\n\n${stdout}`, edit: sentMsg.key }, { quoted: m });
         }
     });
 };
