@@ -87,8 +87,6 @@ Next command. ::
         }
     }
 }, { quoted: m })
-    }
-}, { quoted: m })
 
     await database.save()
 }
