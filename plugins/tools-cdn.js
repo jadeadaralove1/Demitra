@@ -6,10 +6,10 @@ let handler = async (m, { conn }) => {
   const mime = msg.msg?.mimetype || msg.mimetype || ''
 
   if (!mime)
-    return m.reply('❌ Responde a un archivo con *.cdn*')
+    return m.reply('𐄹 ۪ ׁ ❌ᩚ̼ 𖹭̫ ▎ Responde a un archivo con *.cdn*')
 
   if (!/gif|video|image|audio/.test(mime))
-    return m.reply('❌ Formato no compatible.')
+    return m.reply('𐄹 ۪ ׁ ❌ᩚ̼ 𖹭̫ ▎ Formato no compatible.')
 
   await m.reply('◜࣭࣭࣭࣭࣭᷼⏳̸̷ׁᮬᰰᩫ࣭࣭࣭࣭  Descargando archivo...')
 
