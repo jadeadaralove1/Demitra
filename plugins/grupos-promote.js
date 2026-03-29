@@ -34,7 +34,7 @@ let handler = async (m, { conn, command, isAdmin, isOwner, isBotAdmin }) => {
         else if (command === 'demote') {
             await conn.groupParticipantsUpdate(m.chat, [who], 'demote')
             // ¡CORREGIDO! Se agrega "mentions" para que la etiqueta funcione correctamente
-            await conn.sendMessage(m.chat, { text: `*¡DEMOTE APLICADO!*\n\n@${who.split('@')[0]} ya no es administrador.`, mentions: [who] }, { quoted: m })
+            await conn.sendMessage(m.chat, { text: `ׄㅤֶָ֪ㅤಟㅤׄ    𝗦𝖾 𝖺 𝗊𝗎𝗶𝘁𝗮𝗱𝗈\n\n@${who.split('@')[0]} 𝖽𝖾 𝖺𝗱𝗺𝗂𝗇. ✖️`, mentions: [who] }, { quoted: m })
             await m.react('👑')
         }
     } catch (e) {
