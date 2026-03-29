@@ -1,7 +1,7 @@
 import { exec } from 'child_process';
 
 const handler = async (m, { conn }) => {
-    let sentMsg = await m.reply('💢 Actualizando para ti... espera un momento');
+    let sentMsg = await m.reply('◜࣭࣭࣭࣭࣭᷼💢̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ Actualizando para ti… un momento, querido');
 
     exec('git pull', (err, stdout, stderr) => {
         if (err) {
