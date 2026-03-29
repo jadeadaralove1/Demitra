@@ -18,11 +18,17 @@ TEL;type=CELL;type=VOICE;waid=${numberOwner}:${numberOwner}
 END:VCARD`;
 
     // 💬 Mensaje estilo anime
-    let texto = `╭━━━〔 ♡ Demitra ♡ 〕━━━⬣
-┃ ❥ Aquí está mi creador
-┃ ❥ Puedes hablar con él si me necesitas
-┃ ❥ No seas tímido... 💗
-╰━━━━━━━━━━━━━━━━⬣`;
+    let texto = `.    ︵︵︵  ׅ  ׄ ୨ 𖹭 ৎ ׄ  ׅ  ︵︵︵
+
+ᘞㅤ۪ㅤ𝇄 𝇃ㅤ¡ 𝗗𝖾𝗆𝗶𝗍𝗋𝖺 𝗕𝗈𝗍!ㅤׅㅤ🪼
+
+⁖    ᭲⏰ᯮ  ᯮ    ᮫  Aquí está el núm de mi creadora. 
+
+ׅ  ⁘  𝆬 🌸 Puedes hablar con ella por cualquier cosa. 
+
+> 𖦹 ̼  ﹒ ﹒ Lol. 
+
+ 𝅭  ㅤ ⎯⎯ㅤ   ִㅤ୨ 🪼 ୧ㅤִ     ⎯⎯ ㅤ 𝅭`;
 
     // 📩 Enviar mensaje
     await conn.sendMessage(m.chat, { text: texto }, { quoted: m });
