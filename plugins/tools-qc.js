@@ -9,7 +9,7 @@ let handler = async (m, { conn, args }) => {
     let textFinal = args.join(' ') || m.quoted?.text
 
     if (!textFinal) {
-      return conn.reply(m.chat, '《✧》 Ingresa un texto para crear el sticker.', m)
+      return conn.reply(m.chat, '𐄹 ۪ ׁ ⚠️ᩚ̼ 𖹭̫ ▎ Ingresa un texto para crear el sticker.', m)
     }
 
     let target = m.quoted ? m.quoted.sender : m.sender
