@@ -7,7 +7,7 @@ let handler = async (m, { conn }) => {
 
     // 📞 Datos del owner
     let numberOwner = '5493863447787';
-    let nombreOwner = '❷運⛁       #Owner﹐     𓈓 (🪼)    ❤︎    ¿ 𝖠𝖣𝖠𝖱𝖠?
+    let nombreOwner = '#Owner﹐     𓈓 (🪼)    ❤︎    ¿ 𝖠𝖣𝖠𝖱𝖠?
         𝄖 ♡       ❛  ﹫socialmedia   ❜       ⛃';
 
     // 📇 vCard
@@ -19,7 +19,7 @@ TEL;type=CELL;type=VOICE;waid=${numberOwner}:${numberOwner}
 END:VCARD`;
 
     // 💬 Mensaje estilo anime
-    let texto = `.    ︵︵︵  ׅ  ׄ ୨ 𖹭 ৎ ׄ  ׅ  ︵︵︵
+    let texto = `    ︵︵︵  ׅ  ׄ ୨ 𖹭 ৎ ׄ  ׅ  ︵︵︵
 
 ᘞㅤ۪ㅤ𝇄 𝇃ㅤ¡ 𝗗𝖾𝗆𝗶𝗍𝗋𝖺 𝗕𝗈𝗍!ㅤׅㅤ🪼
 
