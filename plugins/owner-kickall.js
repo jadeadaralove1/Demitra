@@ -1,8 +1,8 @@
 let handler = async (m, { conn, isOwner, usedPrefix, command }) => {
-    if (!m.isGroup) return m.reply('❌ Este comando solo funciona en grupos');
+    if (!m.isGroup) return m.reply('𐄹 ۪ ׁ ❌ᩚ̼ 𖹭̫ ▎Este comando solo funciona en grupos');
 
     // Verificar si el usuario es el owner del bot
-    if (!isOwner) return m.reply('❌ Solo el owner del bot puede usar este comando');
+    if (!isOwner) return m.reply('𐄹 ۪ ׁ ❌ᩚ̼ 𖹭̫ ▎Solo el owner del bot puede usar este comando');
 
     try {
         // Obtener información del grupo
@@ -18,7 +18,7 @@ let handler = async (m, { conn, isOwner, usedPrefix, command }) => {
         );
 
         if (nonAdminParticipants.length === 0) {
-            return m.reply('❌ No hay miembros no administradores para eliminar');
+            return m.reply('◜࣭࣭࣭࣭࣭᷼🚫̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ No hay miembros no administradores para eliminar');
         }
 
         // Enviar mensaje de inicio
@@ -36,11 +36,11 @@ let handler = async (m, { conn, isOwner, usedPrefix, command }) => {
         }
 
         // Mensaje de finalización
-        await m.reply(`✅ Se han eliminado ${nonAdminParticipants.length} miembros del grupo`);
+        await m.reply(`◜࣭࣭࣭࣭࣭᷼✅̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ Se han eliminado ${nonAdminParticipants.length} miembros del grupo`);
 
     } catch (error) {
         console.error('Error al ejecutar kickall:', error);
-        await m.reply(`❌ Error: ${error.message}`);
+        await m.reply(`𐄹 ۪ ׁ ❌ᩚ̼ 𖹭̫ ▎ Error: ${error.message}`);
     }
 };
 
