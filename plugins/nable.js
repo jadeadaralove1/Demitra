@@ -25,19 +25,19 @@ const handler = async (m, { args, prefix }) => {
     }
 
     if (action !== 'on' && action !== 'off') {
-        return m.reply(`「 ⚠️ 」 Usa *on* o *off*.\n✦ *${prefix}nable ${feature} on/off*`)
+        return m.reply(`𐄹 ۪ ׁ ⚠️ᩚ̼ 𖹭̫ ▎ Usa *on* o *off*.\n> *${prefix}nable ${feature} on/off*`)
     }
 
     const state = action === 'on'
 
     if (chat[feature] === state) {
-        return m.reply(`「 ⚠️ 」 ${features[feature]} ya estaba ${state ? 'activado' : 'desactivado'}.`)
+        return m.reply(`*𐄹 ۪ ׁ ⚠️ᩚ̼ 𖹭̫ ▎ ${features[feature]} ya estaba ${state ? 'activado' : 'desactivado'}.`)
     }
 
     chat[feature] = state
     await database.save()
 
-    m.reply(`「 ${state ? '✅' : '❌'} 」 ${features[feature]} ${state ? 'activado' : 'desactivado'}.`)
+    m.reply(`${state ? '✅' : '❌'} ${features[feature]} ${state ? 'activado' : 'desactivado'}.`)
 }
 
 handler.command = ['nable', 'feature', 'función']
