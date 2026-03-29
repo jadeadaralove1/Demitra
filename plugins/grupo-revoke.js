@@ -1,7 +1,7 @@
 let handler = async (m, { conn, usedPrefix, command }) => {
 
   if (!m.isGroup) {
-    return m.reply('⚠️ Este comando solo funciona en grupos')
+    return m.reply('𐄹 ۪ ׁ ⚠️ᩚ̼ 𖹭̫ ▎Este comando solo funciona en grupos')
   }
 
   try {
