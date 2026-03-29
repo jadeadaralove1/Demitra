@@ -19,7 +19,7 @@ const handler = async (msg, { conn, args, usedPrefix, command }) => {
 
   await conn.sendMessage(
     msg.chat,
-    { text: '🖼️ Generando imagen...' },
+    { text: '𐄹 ۪ ׁ 🖼️ᩚ̼ 𖹭̫ ▎ Generando una imagen...' },
     { quoted: msg }
   )
 
