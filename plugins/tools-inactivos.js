@@ -11,12 +11,12 @@ let handler = async (m, { conn, isAdmin, isOwner }) => {
     const inactivos = participants.filter(p => !p.admin).map(p => p.id)
 
     if (inactivos.length === 0) {
-        return m.reply('✅ No hay usuarios inactivos en este grupo.')
+        return m.reply('𐄹 ۪ ׁ ✅ᩚ̼ 𖹭̫ ▎No hay usuarios inactivos en este grupo.')
     }
 
-    let txt = `⚠️ *${inactivos.length} USUARIOS INACTIVOS DETECTADOS*\n\n`
+    let txt = `𐄹 ۪ ׁ ⚠️ᩚ̼ 𖹭̫ ▎ *${inactivos.length} USUARIOS INACTIVOS DETECTADOS*\n\n`
     inactivos.forEach(id => txt += `• @${id.split('@')[0]}\n`)
-    txt += `\nSi no se conectan en 1 hora tal vez sean eliminados.\n\n¿Quieres eliminarlos ahora?`
+    txt += `\nSi no se conectan en 1 hora tal vez sean eliminados.\n\n> ¿Quieres eliminarlos ahora?`
 
     const buttonMessage = {
         text: txt,
@@ -35,7 +35,7 @@ let handler = async (m, { conn, isAdmin, isOwner }) => {
     // Enviar al canal oficial (rcanal)
     const CANAL = '0029Vb6p68rF6smrH4Jeay3Y@newsletter'
     await conn.sendMessage(CANAL, {
-        text: `⚠️ *Inactivos detectados*\nGrupo: ${group.subject}\nCantidad: ${inactivos.length}\nUsuarios: ${inactivos.map(id => '@' + id.split('@')[0]).join(' ')}`
+        text: `𐄹 ۪ ׁ ⚠️ᩚ̼ 𖹭̫ ▎*Inactivos detectados*\nGrupo: ${group.subject}\nCantidad: ${inactivos.length}\nUsuarios: ${inactivos.map(id => '@' + id.split('@')[0]).join(' ')}`
     })
 }
 
