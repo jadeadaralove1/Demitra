@@ -36,7 +36,8 @@ export const run = async (conn, update) => {
                 `  ⃧⠖⠖   ּ֪🪷͘⃝ۛ֗༌   𐧼  _꧖꧖_  *@desc* 
 ּ ֶָ֢ .             ּ ֶָ֢ .             ּ ֶָ֢ .             ּ ֶָ֢ .  
          ּ ֶָ֢ .             ּ ֶָ֢ .             ּ ֶָ֢ .             ּ ֶָ֢ .\n\n` +
-                `¡Estoy tan feliz de tenerte aquí conmigo, mi Darling más especial! Kyaaah~ Ven aquí, no te escapes 🌷💗`
+                `F͠๏г ::  ˤˤ @$(user) ᬁ
+                   *©ʟᴀʀʀɪx*`
 
             await conn.sendMessage(id, {
                 image: { url: ppuser },
