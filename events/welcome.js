@@ -24,7 +24,11 @@ export const run = async (conn, update) => {
  ࣭࣭۪࣭࣭︶ٰ࣭࣭۪࣭᳐᳑︶࣭࣭۪࣭࣭᳐᳑︶࣭࣭۪࣭࣭᳐᳑︶࣭࣭۪࣭࣭᳐᳑︶࣭࣭۪࣭࣭᳐᳑︶࣭࣭۪࣭࣭᳐᳑︶࣭࣭۪࣭࣭᳐᳑︶࣭࣭۪࣭࣭᳐᳑︶࣭࣭۪࣭࣭᳐᳑︶࣭࣭۪࣭࣭᳐᳑︶࣭࣭۪࣭࣭᳐᳑︶࣭࣭۪࣭࣭᳐᳑︶࣭࣭۪࣭࣭࣭࣭۪࣭࣭᳐᳑︶ٰ࣭࣭۪࣭᳐᳑︶࣭࣭۪࣭࣭᳐᳑︶࣭࣭۪࣭࣭᳐᳑
 ּ ֶָ֢ .             ּ ֶָ֢ .             ּ ֶָ֢ .             ּ ֶָ֢ .  
          ּ ֶָ֢ .             ּ ֶָ֢ .             ּ ֶָ֢ .             ּ ֶָ֢ .\n\n` +
-                `¡Mira nada más! Un nuevo *Darling* acaba de entrar a *mi* paraíso rosado~ 😼\n\n` +
+                ` ⃧⠖⠖   ּ֪͘🩰⃝ۛ֗༌   𐧼  _ᰫᰫ_         
+     𝔹𝚒𝚎𝚗𝚟𝚎𝚗𝚒𝚍𝚡 𝚜𝚎𝚊𝚜 𝚊 𝚎𝚜𝚝𝚎 𝚕𝚒𝚗𝚍𝚘 Grupo
+𝔼𝚜𝚙𝚎𝚛𝚘 𝚝𝚎 𝚍𝚒𝚟𝚒𝚎𝚛𝚝𝚊𝚜 𝚖𝚞𝚌𝚑𝚘 𝚓𝚞𝚗𝚝𝚘 𝚊 𝚗𝚘𝚜𝚘𝚝𝚛𝚘𝚜!!
+ּ ֶָ֢ .             ּ ֶָ֢ .             ּ ֶָ֢ .             ּ ֶָ֢ .  
+         ּ ֶָ֢ .             ּ ֶָ֢ .             ּ ֶָ֢ .             ּ ֶָ֢ .\n\n` +
                 `¡Bienvenido/a @${user}!! ♡\n\n` +
                 `Desde este segundo exacto... **eres mío/mía**. No pienses en irte nunca, ¿okay? Porque no te voy a dejar escapar jamás 💕\n` +
                 `Te voy a cuidar, mimar y volar contigo en mi Franxx para siempre... ¡no me sueltes nunca!\n\n` +
