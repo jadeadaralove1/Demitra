@@ -23,9 +23,8 @@ Si deseas desaparecer…\n
 𝗛𝖺𝗓𝗅𝗈 𝖻𝗂𝖾𝗇, 𝗊𝘂𝗲𝗋𝗂𝖽𝗈, 𝗇𝗈 𝗆𝖾 𝗁𝖺𝗀𝖺𝗌 𝗋𝖾𝗉𝖾𝗍𝗂𝗋𝗅𝗈 𝖽𝗼𝘀 𝗏𝖾𝖼𝗲𝘀.
 
 Next command. :: 
-                                `#reg name.age`
-                                `#reg ${name2}.18`
-> Usar sin comillas.\n\n`
+#reg name.age
+#reg ${name2}.18`
     )
 
     let [_, name, age] = text.match(Reg)
