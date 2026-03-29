@@ -8,12 +8,12 @@ let handler = async (m, { conn, args, db, prefix }) => {
 
     if (state === 'on') {
         chat.modoadmin = true;
-        m.reply('⚙️ *Demitrabot*\n\n🔒 *Modo Admin: ACTIVADO*\n_A partir de ahora, solo los administradores pueden darle órdenes a Zero Two en este grupo._');
+        m.reply('*Demitrabot*\n\n𐄹 ۪ ׁ🔒 ᩚ̼ 𖹭̫ ▎ *Modo Admin: ACTIVADO*\n_A partir de ahora, solo los administradores pueden darle órdenes a Zero Two en este grupo._');
     } else if (state === 'off') {
         chat.modoadmin = false;
-        m.reply('⚙️ *Demitrabot*\n\n🔓 *Modo Admin: DESACTIVADO*\n_El sistema vuelve a estar abierto para todos los miembros._');
+        m.reply('*Demitrabot*\n\n𐄹 ۪ ׁ🔒 ᩚ̼ 𖹭̫ ▎ *Modo Admin: DESACTIVADO*\n_El sistema vuelve a estar abierto para todos los miembros._');
     } else {
-        m.reply(`⚠️ *Error de sintaxis.*\n\nUso correcto:\n> *${prefix}modoadmin on*\n> *${prefix}modoadmin off*`);
+        m.reply(`𐄹 ۪ ׁ ⚠️ᩚ̼ 𖹭̫ ▎ *Error de sintaxis.*\n\nUso correcto:\n> *${prefix}modoadmin on*\n> *${prefix}modoadmin off*`);
     }
 };
 
