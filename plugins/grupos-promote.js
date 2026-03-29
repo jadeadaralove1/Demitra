@@ -2,12 +2,12 @@ let handler = async (m, { conn, command, isAdmin, isOwner, isBotAdmin }) => {
     // Validaciones de grupo y admin (aunque tu framework ya lo hace abajo, es buen filtro)
     if (!m.isGroup) {
         await m.react('😞')
-        return m.reply('Este comando solo funciona en grupos.')
+        return m.reply('𐄹 ۪ ׁ ⚠️ᩚ̼ 𖹭̫ ▎Este comando solo funciona en grupos.')
     }
 
     if (!isAdmin && !isOwner) {
         await m.react('😞')
-        return m.reply('Solo admins y owner pueden usar este comando')
+        return m.reply('𐄹 ۪ ׁ ⚠️ᩚ̼ 𖹭̫ ▎Solo admins y owner pueden usar este comando')
     }
 
     // ¡NUEVO! Validar que el bot tenga permisos de administrador
