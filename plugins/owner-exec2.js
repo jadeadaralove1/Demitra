@@ -5,7 +5,7 @@ const exec = promisify(_exec).bind(cp)
 
 let handler = async (m, { conn, args }) => {
     const text = args.join(' ')
-    if (!text) return m.reply('Ingresa un comando~')
+    if (!text) return m.reply('◜࣭࣭࣭࣭࣭᷼📍̸̷ׁᮬᰰᩫ࣭࣭࣭࣭Ingresa un comando')
 
     await m.reply('*Ejecutando*')
 
