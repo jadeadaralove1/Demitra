@@ -3,7 +3,8 @@ import { exec } from 'child_process'
 
 let handler = async (m, { conn }) => {
     let timestamp = speed()
-    let sentMsg = await m.reply('Hmph... calculando.')
+    let sentMsg = await m.reply('❏ Demitra bot! 
+> Calculando... ')
     let latency = speed() - timestamp
 
     exec('neofetch --stdout', (error, stdout, stderr) => {
@@ -15,7 +16,7 @@ let handler = async (m, { conn }) => {
     })
 }
 
-handler.help = ['ping']
+handler.help = ['ping','p']
 handler.tags = ['main']
 handler.command = ['ping']
 
