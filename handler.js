@@ -301,7 +301,7 @@ Te sugiero amablemente usar #menu… a menos que disfrutes equivocarte, claro.
         }
 
         if (cmd.rowner && !isROwner) {
-            return m.reply('👑 *ACCESO DENEGADO*\nEste comando solo puede ser ejecutado por el creador principal.');
+            return m.reply('𐄹 ۪ ׁ 👑ᩚ̼ 𖹭̫ ▎ *DEMITRA*\n\n> *ACCESO DENEGADO*\n\n“Oh, qué ambición tan… encantadora.”\n\n“Lamentablemente, este privilegio está reservado únicamente para el *creador principal*.”\n\n“Y tú… bueno, no eres él~”');
         }
 
         if (cmd.owner && !isOwner) {
