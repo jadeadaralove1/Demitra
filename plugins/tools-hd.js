@@ -84,11 +84,11 @@ let handler = async (m, { conn, usedPrefix, command }) => {
   let mime = (q.msg || q).mimetype || ''
 
   if (!mime) {
-    return m.reply(`🖼️ *Mejorar calidad de imagen (HD)*\n\nResponde a una imagen con *${usedPrefix + command}*\n\nFunción: Escala la imagen x4 usando IA`)
+    return m.reply(`𐄹 ۪ ׁ 🖼️ᩚ̼ 𖹭̫ ▎ *Mejorar calidad de imagen (HD)*\n\n> Responde a una imagen con *${usedPrefix + command}*\n\n> Función: Escala la imagen x4 usando IA`)
   }
 
   if (!/image\/(jpe?g|png|webp)/.test(mime)) {
-    return m.reply('❌ El formato debe ser una imagen (JPG, PNG, WEBP)')
+    return m.reply('◜࣭࣭࣭࣭࣭᷼❌̸̷ׁᮬᰰᩫ࣭࣭࣭࣭  El formato debe ser una imagen (JPG, PNG, WEBP)')
   }
 
   m.react('⏳')
@@ -106,14 +106,14 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 
     await conn.sendMessage(m.chat, {
       image: resultBuffer,
-      caption: `✅ *Imagen mejorada (x4)*\n\n> ✨ Calidad aumentada con IA`
+      caption: `𐄹 ۪ ׁ ✅ᩚ̼ 𖹭̫ ▎*Imagen mejorada (x4)*\n\n> ✨ Calidad aumentada con IA`
     }, { quoted: m })
 
     m.react('✅')
   } catch (e) {
     console.error(e)
     m.react('❌')
-    m.reply(`❌ Error al procesar la imagen:\n${e.message}`)
+    m.reply(`◜࣭࣭࣭࣭࣭᷼❌̸̷ׁᮬᰰᩫ࣭࣭࣭࣭  Error al procesar la imagen:\n${e.message}`)
   }
 }
 
