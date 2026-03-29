@@ -14,10 +14,10 @@ const handler = async (m, { conn }) => {
   const numero = objetivo.replace(/\D/g, '')
 
   const mensaje = `
-📡 *Información del usuario detectado:*
-👤 *Identificador:* ${objetivo}
-📱 *Número:* +${numero}
-🔐 *Tipo de cuenta:* ${tipo}
+◜࣭࣭࣭࣭࣭᷼🔐̸̷ׁᮬᰰᩫ࣭࣭࣭࣭*Información del usuario detectado:*
+> *Identificador:* ${objetivo}
+> *Número:* +${numero}
+> *Tipo de cuenta:* ${tipo}
 `.trim()
 
   await m.reply(mensaje)
