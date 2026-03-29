@@ -48,9 +48,6 @@ let handler = async (m, { conn }) => {
 ┃ 👥 Usuarios » *${users}*
 ┃ 💬 Grupos » *${groups}*
 ┃ 🎯 Comandos » *${finalCommands}*
-┃ 🧠 RAM » *${ramUsada} / ${ramTotal}*
-┃ ⚙️ CPU » *${os.cpus().length} cores*
-┃ 🖥️ Sistema » *${os.type()}*
 ┃ ⏱️ Uptime » *${h}h ${mnt}m ${s}s*
 ┃ ⚡ Ping » *${ping} ms*
 ╰━━━━━━━━━━━━━━━━⬣`
