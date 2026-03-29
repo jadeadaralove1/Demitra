@@ -33,9 +33,18 @@ let handler = async (m, { conn, args, prefix }) => {
 
     const sn = createHash('md5').update(m.sender).digest('hex').slice(0, 20)
 
-    const regbot = `𖤐 *¡REGISTRO EXITOSO!* 🌸\n\n👤 *Nombre:* ${name}\n🎂 *Edad:* ${age} años\n🆔 *ID:* ${sn}\n\n💗 *¡Bienvenido/a, darling~!*\n\nHmph... más te vale usar el bot bien o no te lo perdonaré~ 💢`
+    const regbot = `♠ Registro — Demitra ♠
 
-    await m.react('🌸')
+Formato adecuado:
+#reg nombre.edad
+
+Ejemplo:
+#reg ${name2}.18
+
+> Qué descuido no estar registrado…
+Adelante, querido hazlo correctamente`
+
+    await m.react('🪻')
 
     let thumbBuffer = null
     try {
@@ -50,7 +59,7 @@ let handler = async (m, { conn, args, prefix }) => {
         contextInfo: {
             externalAdReply: {
                 title: '𝐙𝐄𝐑𝐎 𝐓𝐖𝐎 - Registro 🌸',
-                body: 'darling~ 💗',
+                body: 'BOMSHAKALACA',
                 thumbnail: thumbBuffer,
                 mediaType: 1,
                 renderLargerThumbnail: true
