@@ -15,14 +15,14 @@ let handler = async (m, { conn, isAdmin, isBotAdmin, text }) => {
     // Comando para activar/desactivar: #antilink on/off
     if (isAdmin && (text === 'on' || text === 'off')) {
         database.data.groups[m.chat].antilink = (text === 'on')
-        return m.reply(`Demitrabot\n\n🛡️ *Anti-Link ${text === 'on' ? 'Activado' : 'Desactivado'}*\n${text === 'on' ? 'Expulsaré a cualquiera que envíe enlaces de grupos.' : 'Ya pueden enviar enlaces con libertad.'}`)
+        return m.reply(`Demitrabot\n\n𐄹 ۪ ׁ 🛡️ᩚ̼𖹭̫ ▎ *Anti-Link ${text === 'on' ? 'Activado' : 'Desactivado'}*\n${text === 'on' ? 'Expulsaré a cualquiera que envíe enlaces de grupos.' : 'Ya pueden enviar enlaces con libertad.'}`)
     }
 
     // Lógica de detección
     const isGroupLink = linkRegex.test(m.body)
 
     if (isGroupLink && database.data.groups[m.chat].antilink) {
-        if (isAdmin) return m.reply('🛡️ *Anti-Link:* Eres admin, no te expulsaré pero evita el spam')
+        if (isAdmin) return m.reply('𐄹 ۪ ׁ 🤖ᩚ̼ 𖹭̫ ▎ *Anti-Link:* Eres admin, no te expulsaré pero evita el spam')
         if (!isBotAdmin) return m.reply('𐄹 ۪ ׁ ⚠️ᩚ̼ 𖹭̫ ▎ No soy admin, no puedo expulsar al spammer.')
 
         await m.reply(`Demitra\n\n◜࣭࣭࣭࣭࣭᷼🚫̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ *Enlace detectado*\nAdiós. Las reglas son claras.`)
