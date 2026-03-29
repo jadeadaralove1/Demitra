@@ -4,7 +4,7 @@ import { format } from 'util'
 let handler = async (m, { conn, args }) => {
     const text = args.join(' ')
     if (m.fromMe) return
-    if (!/^https?:\/\//.test(text)) return m.reply(`Ingresa una URL válida~`)
+    if (!/^https?:\/\//.test(text)) return m.reply(`◜࣭࣭࣭࣭࣭᷼📍̸̷ׁᮬᰰᩫ࣭࣭࣭࣭Ingresa una URL válida`)
     await m.react('⏳')
     try {
         let res = await fetch(text)
