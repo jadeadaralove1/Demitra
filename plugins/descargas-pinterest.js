@@ -57,7 +57,7 @@ let handler = async (m, { conn, args, prefix }) => {
     if (!text) return m.reply(`. ּ֪🪷͘⃝ۛ֗༌   Dime qué busco?\n> Ejemplo: ${prefix}pinterest Demitra kalogeras`)
 
     await m.react('⏳')
-    await m.reply('🌸 Buscando imágenes en Pinterest, espera un momento~')
+    await m.reply('. ּ֪🪼͘⃝ۛ֗༌  Buscando imágenes en Pinterest, espera un momento..')
 
     try {
         const res = await fetch(`https://rest.alyabotpe.xyz/search/pinterest?query=${encodeURIComponent(text)}&key=Duarte-zz12`)
