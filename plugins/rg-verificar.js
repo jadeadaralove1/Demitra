@@ -24,7 +24,7 @@ Si deseas desaparecer…\n
 
 Next command. :: 
                                 `#reg name.age`
-                                `#reg name.18`
+                                `#reg ${name2}.18`
 > Usar sin comillas.\n\n`
     )
 
