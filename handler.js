@@ -293,7 +293,7 @@ Te sugiero amablemente usar #menu… a menos que disfrutes equivocarte, claro.
 
         // 🛑 INTERCEPTOR DE MODO ADMIN 🛑
         if (isGroup && database.data.groups[m.chat]?.modoadmin && !isAdmin && !isOwner) {
-            return m.reply('⚙️ *DEMITRA*\n\n🔒 *MODO ADMIN ACTIVO*\n_Demi está temporalmente restringida. Solo los administradores pueden usar comandos en este grupo._');
+            return m.reply('𐄹 ۪ ׁ 🦭ᩚ̼ 𖹭̫ ▎*DEMITRA*\n\n> *MODO ADMIN ACTIVADO*\n\n“Oh my… parece que Demi ha decidido cerrar el telón temporalmente”\n“Solo los administradores tienen el privilegio de… participar en este pequeño espectáculo.”\n\n“Te sugiero observar en silencio… o podrías arruinar la función.”');
         }
 
         if (database.data.users[m.sender]?.banned && !isOwner) {
