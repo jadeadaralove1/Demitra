@@ -28,7 +28,7 @@ let handler = async (m, { conn }) => {
                 response += `*Error encontrado*\n\n`
                 response += `◜࣭࣭࣭࣭࣭᷼📁̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ *Archivo:* ${file}\n`
                 response += `◜࣭࣭࣭࣭࣭᷼📝̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ *Mensaje:* ${error.message}\n`
-                response += `📍 *Línea:* ${errorLine}\n`
+                response += `◜࣭࣭࣭࣭࣭᷼📍̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ *Línea:* ${errorLine}\n`
                 response += `━━━━━━━━━━━━━━━━━━━\n\n`
             }
         }
@@ -38,17 +38,17 @@ let handler = async (m, { conn }) => {
             response += `No se detectaron errores de sintaxis\n`
             response += `Todos los ${files.length} archivos están funcionando correctamente`
         } else {
-            response += `💢 *Resumen de errores:*\n\n`
-            response += `❌ Total de errores: ${errorCount}\n`
-            response += `📂 Archivos revisados: ${files.length}\n`
+            response += `◜࣭࣭࣭࣭࣭᷼💢̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ *Resumen de errores:*\n\n`
+            response += `𐄹 ۪ ׁ ❌ᩚ̼ 𖹭̫ ▎ Total de errores: ${errorCount}\n`
+            response += `◜࣭࣭࣭࣭࣭᷼📁̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ Archivos revisados: ${files.length}\n`
             response += `Revisa los archivos mencionados`
         }
 
         await m.reply(response)
-        await m.react(hasErrors ? '💔' : '🐞')
+        await m.react(hasErrors ? '😞' : '🐞')
     } catch (err) {
-        await m.react('💔')
-        await m.reply(`Algo salió mal...\n\n📝 *Error:* ${err.message}`)
+        await m.react('😞')
+        await m.reply(`Algo salió mal...\n\n◜࣭࣭࣭࣭࣭᷼📝̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ *Error:* ${err.message}`)
     }
 }
 
