@@ -335,7 +335,7 @@ Te sugiero amablemente usar #menu… a menos que disfrutes equivocarte, claro.
         if (cmd.limit && !isPremium && !isOwner) {
             const userLimit = database.data.users[m.sender].limit || 0;
             if (userLimit < 1) {
-                return m.reply(`⚠️ *SIN LÍMITES*\nSe han agotado tus límites diarios.\n💎 Los usuarios premium tienen límites ilimitados.`);
+                return m.reply(`𐄹 ۪ ׁ ⚠️ᩚ̼ 𖹭̫ ▎*SIN LÍMITES*\n\n“Has llegado al final de lo que se te permite…”\n\n“No quedan usos disponibles para ti.”\n“Quizás deberías considerar el *Premium*… o aprender a administrarte mejor.”`);
             }
             database.data.users[m.sender].limit -= 1;
             await database.save();
