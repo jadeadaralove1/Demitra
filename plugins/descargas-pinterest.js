@@ -54,7 +54,7 @@ async function sendAlbumMessage(conn, jid, medias, options = {}) {
 
 let handler = async (m, { conn, args, prefix }) => {
     const text = args.join(' ')
-    if (!text) return m.reply(`💗 Darling, dime qué buscar~\n> Ejemplo: ${prefix}pinterest Zero Two`)
+    if (!text) return m.reply(`. ּ֪🪷͘⃝ۛ֗༌   Dime qué busco?\n> Ejemplo: ${prefix}pinterest Demitra kalogeras`)
 
     await m.react('⏳')
     await m.reply('🌸 Buscando imágenes en Pinterest, espera un momento~')
