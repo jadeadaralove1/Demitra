@@ -396,14 +396,14 @@ Te sugiero amablemente usar #menu… a menos que disfrutes equivocarte, claro.
             } catch {}
 
             let debug = `
-❌ *ERROR AL EJECUTAR COMANDO*
+◜࣭࣭࣭࣭࣭᷼❌̸̷ׁᮬᰰᩫ࣭࣭࣭࣭  *ERROR AL EJECUTAR COMANDO*
 
-📌 Tipo: ${errorType}
+◜࣭࣭࣭࣭࣭᷼📍̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ Tipo: ${errorType}
 
-🧾 Mensaje:
+◜࣭࣭࣭࣭࣭᷼📝̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ Mensaje:
 ${errorMsg.slice(0,500)}
 
-⚙️ Comando:
+> ⚙️ Comando:
 ${m.text}
 `.trim()
 
