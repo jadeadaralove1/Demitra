@@ -9,7 +9,7 @@ const handler = async (m, { conn }) => {
 
             exec('git reset --hard origin/main && git pull', (err2, stdout2, stderr2) => {
                 if (err2) {
-                    conn.sendMessage(m.chat, { text: `Ni siquiera yo pude lograrlo...\nRazón: ${err2.message}`, edit: sentMsg.key }, { quoted: m });
+                    conn.sendMessage(m.chat, { text: `◜࣭࣭࣭࣭࣭᷼🔐̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ Todo ya estaba en orden… No había nada que actualizar...\nRazón: ${err2.message}`, edit: sentMsg.key }, { quoted: m });
                     return;
                 }
 
@@ -22,7 +22,7 @@ const handler = async (m, { conn }) => {
         if (stderr) console.warn(stderr);
 
         if (stdout.includes('Already up to date.')) {
-            conn.sendMessage(m.chat, { text: 'Todo ya estaba en orden, No había nada que actualizar.', edit: sentMsg.key }, { quoted: m });
+            conn.sendMessage(m.chat, { text: '◜࣭࣭࣭࣭࣭᷼🔐̸̷ׁᮬᰰᩫ࣭࣭࣭࣭Todo ya estaba en orden, No había nada que actualizar.', edit: sentMsg.key }, { quoted: m });
         } else {
             conn.sendMessage(m.chat, { text: `◜࣭࣭࣭࣭࣭᷼🐞̸̷ׁᮬᰰᩫ࣭࣭࣭࣭Actualización completada con éxito!\n\n${stdout}`, edit: sentMsg.key }, { quoted: m });
         }
