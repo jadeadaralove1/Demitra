@@ -27,7 +27,7 @@ ${mentions}\n\n` +
 > ${anuncio}`
 
         await conn.sendMessage(m.chat, {
-            image: { url: 'https://files.catbox.moe/imfx2l.jpg' },
+            image: { url: 'https://files.catbox.moe/bd9bba.jpg' },
             caption: caption,
             mentions: participants
         }, { quoted: m })
