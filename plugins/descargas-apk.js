@@ -24,9 +24,9 @@ let handler = async (m, { conn, args, prefix }) => {
         `┆ ⋆ Buscando *"${text}"\n\n` +
         `> Elige tu sitio favorito:*\n\n` +
         `> Uptodown* (el más seguro y rápido)\nhttps://uptodown.com/android/search?q=${q}\n\n` +
-        `🐈‍⬛̸ᅟ𔒲ᅟᅟׅ *APKPure* (muchas versiones)\nhttps://apkpure.com/search?q=${q}\n\n` +
-        `🐈‍⬛̸ᅟ𔒲ᅟᅟׅ *APKCombo* (todas las versiones)\nhttps://apkcombo.com/search?q=${q}\n\n` +
-        `🐈‍⬛̸ᅟ𔒲ᅟᅟׅ *Aptoide* (fácil de instalar)\nhttps://aptoide.com/search?query=${q}\n\n` +
+        `𐄹 ۪ ׁ 📝ᩚ̼ 𖹭̫ ▎ *APKPure* (muchas versiones)\nhttps://apkpure.com/search?q=${q}\n\n` +
+        `*APKCombo* (todas las versiones)\nhttps://apkcombo.com/search?q=${q}\n\n` +
+        `*Aptoide* (fácil de instalar)\nhttps://aptoide.com/search?query=${q}\n\n` +
         `¡Descarga solo de estos sitios de confianza! Si quieres que te recomiende la mejor versión o te ayude con otra cosa, solo dime ♡\n\n` +
         `0 virus.`
 
