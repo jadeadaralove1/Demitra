@@ -22,7 +22,7 @@ try {
     await conn.groupParticipantsUpdate(m.chat, [user], 'promote')
 
     await conn.sendMessage(m.chat, {
-        text: `@${user.split('@')[0]} ahora es admin.`,
+        text: `ׄㅤֶָ֪ㅤಟㅤׄ    𝗦𝖾 𝖺 𝖽𝗮𝗱𝗼 @${user.split('@')[0]}  𝖽𝖾 𝖺𝗱𝗺𝗂𝗇. ✔️`,
         mentions: [user]
     }, { quoted: m })
 
