@@ -51,18 +51,113 @@ ${cmds.map(c => `  ꕦ ${c}`).join('\n')}
             carita = '(◕‿◕✿) 🌙'
         }
 
-        let menuTexto = `𖤐 ❖ 𝐙𝐄𝐑𝐎 𝐓𝐖𝐎'𝐒 𝐌𝐄𝐍𝐔 ❖ 𖤐
-❝ ¡Hola *${m.pushName}*, ${saludo}~! ${carita}
-Soy *${botname}* y este es mi menú,
-más te vale usarlo bien... hmph 💗 ❞
+        let menuTexto = `
+ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
+橫㈵𓂂ㅤㅤ𓐮𝖣ۣؗ𝖤ۣؗ𝖬ۣؗ𝖨ۣؗ𝖳ۣؗ𝖱ۣؗ𝖠ㅤㅤ▞ㅤㅤ𓆭𓆭₂₈₎
+◯◯▸ㅤㅤ⎯⎯▬𝖫ؗOVEㅤㅤ🔘ㅤㅤ ▓█
 
-ꙮ *Comandos:* ${totalCmds} disponibles
-ꙮ *Usuarios:* ${totalUsers} conocidos
-ꙮ *Registrados:* ${registeredUsers} darlings
+⟍𝄄𝄄𝄄𝄄𝄄₂₈₎ㅤㅤ 🔲ㅤㅤ#𝖼𝗋𝖾𝖺𝗍𝗈𝗋ㅤㅤ⬤⬤⏋
 
-${seccionesTexto}
+> ㅤㅤㅤㅤ﹫Demitra(Adara) ㅤㅤ𔘓
 
-𖤐 *~Zero Two* 🌸 (´｡• ᵕ •｡\`)`.trim()
+
+
+ㅤ  𝗐𝖾𝗅𝖼𝗈𝗆𝖾ㅤ𝗌𝗈𝗒ㅤ𝗗᤻͟𝗲᤻͟𝗺᤻͟𝗶᤻͟𝗍᤻͟𝗋᤻͟𝗮᤻͟ㅤ𝗅𝖺ㅤ
+ㅤ     𝗌𝗈𝗇𝗋𝗂𝗌𝖺ㅤ𝗁𝖾𝖼𝗁𝖺ㅤ𝖼͟𝗈᤻͟𝖽⵿𝗂𝗀᤻͟𝗈
+
+ㅤ   𝖺ㅤ𝖼𝗈𝗇𝗍𝗂𝗇𝗎𝖺𝖼𝗂𝗈𝗇ㅤ𝗅𝖾ㅤ𝗆𝗎𝖾𝗌
+ㅤㅤ   -𝗍𝗋𝗈ㅤ𝗆𝗂𝗌ㅤ𝖼⵿𝗈͟𝗆᤻͟𝖺᤻͟𝗇᤻͟𝖽᤻͟𝗈⵿𝗌 75
+
+＿＿／ ㅤㅤ ◢Principal + Main. ㅤㅤ  攤䥵𓌙
+
+.reg
+.unreg
+.perfil
+
+＿＿／ ㅤ ㅤ   Herramientas   ㅤ  攤䥵𓌙
+
+
+.nable/feature/función
+.ping/p
+.menu/help/ayuda
+.chatgpt
+.bot
+.modoadmin/soloadmins
+.status/estado
+.traducir/translate/tr
+.ver/read/readvo
+.pp/foto/profilepic/ppuser
+.iq
+.inactivos
+.horario/hora/time/times
+.hd/upscale/mejorar
+.hack
+.flux
+.cdn
+.join
+＿＿／ ㅤ ㅤ ◢Groupㅤ ㅤ  攤䥵𓌙
+
+.promote/promover
+.open/abrir
+.hidetag/notificar/notify/tag/anuncio
+.link/enlace
+.invocar
+.demote
+.close/cerrar
+.antilink
+.advertencias/warnlist
+.advertir/advertencia/warn/warning
+.gp/groupinfo
+.delwarn/unwarn/quitarad
+.mute
+.unmute
+.kick/echar/hechar/sacar/ban
+.leave/salir
+
+＿＿／ ㅤ ㅤ ◢Stickers ㅤ ㅤ  攤䥵𓌙
+
+.sticker / .s
+.toimg / .toimage
+.brat
+.bratv
+.emojimix
+.qq
+
+＿＿／ ㅤ ㅤ ◢Socket+ㅤ ㅤ  攤䥵𓌙
+.codes/qr
+
+／ ㅤ ㅤ ◢ Descargas ㅤ ㅤ  攤䥵𓌙
+
+• .tiktok / .tt / .tiktoksearch / .ttsearch / .tts
+• .play2
+• .play / .ytamp3
+• .pinterest / .pin
+• .apk / .apkd / .apkdl / .apks
+• .ig / .instagram
+
+／ ㅤ ㅤ ◢  Ownerㅤ ㅤ  攤䥵𓌙
+
+.update
+.restart/reiniciar
+.lid/mylid/tulid
+.get
+.owner/creatora/dueña
+.autoadmin
+.kickall
+
+／ ㅤ ㅤ ◢ Expresiones ㅤ ㅤ  攤䥵𓌙
+
+> ㅤㅤㅤㅤ@𝗉𝗋𝗈𝗑𝗂𝗆𝗈ㅤㅤ𔘓
+
+
+
+▙▅▚ ㅤ ⇲𝖢ؗ𝖧ۣۤ𝖠ؗ𝖭ۖ𝖭ۤ𝖤ۣ𝖫ㅤ⦙⦙⦙◗ ㅤ 𓂧⁸⁶
+
+> https://whatsapp.com/channel/0029VbBvrmwC1Fu5SYpbBE2A
+
+
+
+ㅤㅤㅤㅤ𝖼𝗋𝖾𝖺𝗍𝗈𝗋ㅤㅤ𔘓ㅤㅤ𝗌𝗁𝖾𝗋𝗒`.trim()
 
         const response = await fetch('https://causas-files.vercel.app/fl/9axd.jpg')
         const buffer = await response.buffer()
