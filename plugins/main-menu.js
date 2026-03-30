@@ -160,7 +160,7 @@ ${cmds.map(c => `  ꕦ ${c}`).join('\n')}
 ㅤㅤㅤㅤ𝖼𝗋𝖾𝖺𝗍𝗈𝗋ㅤㅤ𔘓ㅤㅤ𝗌𝗁𝖾𝗋𝗒`.trim()
 
 await conn.sendMessage(m.chat, {
-    image: { url: 'https://causas-files.vercel.app/fl/9vs2.jpg' },
+    image: { url: 'https://causas-files.vercel.app/fl/9axd.jpg' },
     caption: menuTexto,
     mentions: [m.sender]
 }, { quoted: m })
