@@ -155,15 +155,7 @@ const handler = async (m, { conn }) => {
         await conn.sendMessage(m.chat, {
     image: { url: 'https://files.catbox.moe/abcd.jpg' },
     caption: menuTexto,
-    mentions: [m.sender],
-    contextInfo: {
-        externalAdReply: {
-            title: 'DEMITRA - Menú Principal',
-            body: `${totalCmds} comandos disponibles`,
-            sourceUrl: 'https://whatsapp.com/channel/0029VbBvrmwC1Fu5SYpbBE2A',
-            mediaType: 1
-        }
-    }
+    mentions: [m.sender]
 }, { quoted: m })
 
     } catch (e) {
