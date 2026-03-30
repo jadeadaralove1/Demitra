@@ -4,7 +4,7 @@ const handler = async (m, { conn }) => {
     let who = m.mentionedJid?.[0] || m.quoted?.sender || null;
     if (!who) {
       return await conn.sendMessage(m.chat, {
-        text: '𐄹 ۪ ׁ 🦭ᩚ̼ 𖹭̫ ▎Menciona a alguien para quitarle sus *privilegios altos.*'
+        text: '𐄹 ۪ ׁ 🦭ᩚ̼ 𖹭̫ ▎Menciona a alguien para quitarle sus *privilegios altos.'
       }, { quoted: m });
     }
 
@@ -13,7 +13,7 @@ const handler = async (m, { conn }) => {
 
     if (!participant || !participant.admin) {
       return await conn.sendMessage(m.chat, {
-        text: `𐄹 ۪ ׁ 🧝🏽‍♀️ᩚ̼ 𖹭̫ ▎*@${who.split('@')[0]}* no es administrador del grupo!`,
+        text: `𐄹 ۪ ׁ 🧝🏽‍♀️ᩚ̼ 𖹭̫ ▎@${who.split('@')[0]} no es administrador del grupo!`,
         mentions: [who]
       }, { quoted: m });
     }
