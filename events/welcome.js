@@ -25,8 +25,7 @@ export const run = async (conn, update) => {
  ๑     𓈒   ⃝🔔   ׅ   🄳ιɳɠ 🄳σɳɠ       ᮫     ୨୧
      ￮   ֹ 🦭⃞    ࣭    𝖡𝗂𝖾𝗇𝗏𝖾𝗇𝗂𝖽𝗑 ✨ྀ  .  ♡
 
-ʚֵ    ۟    ﹠  🌟̷̷ 𝖣𝖾𝗆𝗂𝗍𝗋𝖺 𝖻𝗈𝗍 𝖽𝖾 𝗐𝗁𝖺𝗍𝗌𝖺𝗉𝗉
-                                𝖧𝖺𝗉𝗉𝗒 ࣪ 🪼  ּ    𝅄  𔘓
+   ʚֵ    ۟    ﹠  🌟̷̷  𝖧𝖺𝗉𝗉𝗒 ࣪ 🪼  ּ    𝅄  𔘓
 
     ଓ     ๋    ࣪   🌻⃞      ࣭   @user ࣪      ੭     •
 
@@ -41,7 +40,7 @@ export const run = async (conn, update) => {
 
 ㅤ୨ৎㅤ⏜︵⏜  ⪩ ⪨  ⏜︵⏜୨ৎ
 
-𝅗ㅤׄㅤㅤִㅤㅤ♡⃘◌ㅤAdara : ownerㅤׄㅤ·ㅤִㅤִ`
+𝅗ㅤׄㅤㅤִ♡⃘◌ㅤAdara : owner·ㅤִㅤִ`
 
             texto = texto
                 .replace(/@desc/g, metadata?.desc || 'Sin descripción')
