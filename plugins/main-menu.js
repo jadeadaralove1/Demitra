@@ -160,13 +160,14 @@ const handler = async (m, { conn }) => {
                 isForwarded: true,
                 forwardingScore: 999,
                 externalAdReply: {
-                    title: 'DEMITRA - Menú Principal',
-                    body: `${totalCmds} comandos disponibles`,
-                    mediaType: 1,
-                    renderLargerThumbnail: true,
-                    thumbnailUrl: 'https://causas-files.vercel.app/fl/9axd.jpg',
-                    sourceUrl: 'https://whatsapp.com/channel/0029VbBvrmwC1Fu5SYpbBE2A'
-                }
+    title: 'DEMITRA - Menú Principal',
+    body: `${totalCmds} comandos disponibles`,
+    mediaType: 1,
+    renderLargerThumbnail: true,
+    showAdAttribution: true,
+    thumbnailUrl: 'https://causas-files.vercel.app/fl/9axd.jpg',
+    sourceUrl: 'https://whatsapp.com/channel/0029VbBvrmwC1Fu5SYpbBE2A'
+}
             }
         }, { quoted: m })
 
