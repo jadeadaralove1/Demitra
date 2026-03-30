@@ -153,16 +153,15 @@ const handler = async (m, { conn }) => {
 ㅤㅤㅤㅤ𝖼𝗋𝖾𝖺𝗍𝗈𝗋ㅤㅤ𔘓ㅤㅤ𝗌𝗁𝖾𝗋𝗒` // dejé esto corto para no duplicarte el bloque gigante
 
         await conn.sendMessage(m.chat, {
-    text: menuTexto,
+    image: { url: 'https://files.catbox.moe/abcd.jpg' },
+    caption: menuTexto,
+    mentions: [m.sender],
     contextInfo: {
-        mentionedJid: [m.sender],
         externalAdReply: {
             title: 'DEMITRA - Menú Principal',
             body: `${totalCmds} comandos disponibles`,
-            mediaType: 1,
-            renderLargerThumbnail: true,
-            thumbnailUrl: 'https://causas-files.vercel.app/fl/9axd.jpg',
-            sourceUrl: 'https://whatsapp.com/channel/0029VbBvrmwC1Fu5SYpbBE2A'
+            sourceUrl: 'https://whatsapp.com/channel/0029VbBvrmwC1Fu5SYpbBE2A',
+            mediaType: 1
         }
     }
 }, { quoted: m })
